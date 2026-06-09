@@ -9,7 +9,6 @@ interface HeroSectionProps {
 
 export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenInquiry, darkMode }) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const canvasRef = useRef<HTMLCanvasElement>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   // Parallax mouse position tracking
@@ -27,140 +26,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenInquiry, darkMod
     return () => window.removeEventListener('mousemove', handleMouseMoveGlobal);
   }, []);
 
-  // Responsive interactive physics-based background particle canvas
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    let animationFrameId: number;
-    let width = (canvas.width = canvas.offsetWidth);
-    let height = (canvas.height = canvas.offsetHeight);
-
-    const particles: Array<{
-      x: number;
-      y: number;
-      vx: number;
-      vy: number;
-      radius: number;
-      color: string;
-      alpha: number;
-      baseAlpha: number;
-      speedModifier: number;
-    }> = [];
-
-    // Subtle ambient particle numbers to ensure elegance over density
-    const particleCount = Math.min(75, Math.floor((width * height) / 16000));
-
-    const colors = [
-      'rgba(214, 177, 107, ', // Luxury Warm Gold
-      'rgba(126, 212, 255, ', // Sapphire/Blue
-      'rgba(247, 248, 250, ', // Pristine Off-White
-    ];
-
-    for (let i = 0; i < particleCount; i++) {
-      const baseAlpha = Math.random() * 0.35 + 0.05;
-      particles.push({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.1,
-        vy: (Math.random() - 0.5) * 0.1,
-        radius: Math.random() * 1.2 + 0.4,
-        color: colors[Math.floor(Math.random() * colors.length)],
-        alpha: baseAlpha,
-        baseAlpha: baseAlpha,
-        speedModifier: Math.random() * 0.6 + 0.4,
-      });
-    }
-
-    // Dynamic mouse position container coordinates with inertia smoothing
-    let targetMouseX = width / 2;
-    let targetMouseY = height / 2;
-    let currentMouseX = width / 2;
-    let currentMouseY = height / 2;
-
-    const handleMouseMoveLocal = (e: MouseEvent) => {
-      const rect = canvas.getBoundingClientRect();
-      targetMouseX = e.clientX - rect.left;
-      targetMouseY = e.clientY - rect.top;
-    };
-
-    window.addEventListener('mousemove', handleMouseMoveLocal);
-
-    const handleResize = () => {
-      if (!canvas) return;
-      width = canvas.width = canvas.offsetWidth;
-      height = canvas.height = canvas.offsetHeight;
-    };
-
-    window.addEventListener('resize', handleResize);
-
-    const draw = () => {
-      ctx.clearRect(0, 0, width, height);
-
-      // Low pass interpolation for natural liquid inertia
-      currentMouseX += (targetMouseX - currentMouseX) * 0.05;
-      currentMouseY += (targetMouseY - currentMouseY) * 0.05;
-
-      for (let i = 0; i < particles.length; i++) {
-        const p = particles[i];
-
-        // Soft linear environmental drift
-        p.x += p.vx * p.speedModifier;
-        p.y += p.vy * p.speedModifier;
-
-        // Soft screen bounds wraps
-        if (p.x < 0) p.x = width;
-        if (p.x > width) p.x = 0;
-        if (p.y < 0) p.y = height;
-        if (p.y > height) p.y = 0;
-
-        // Premium reactive alpha and physical repulsion based on distance
-        const dx = currentMouseX - p.x;
-        const dy = currentMouseY - p.y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-        const activeRadius = 240;
-
-        if (distance < activeRadius) {
-          const ratio = (activeRadius - distance) / activeRadius;
-          // Shimmer and scale up luminance
-          p.alpha = Math.min(0.8, p.baseAlpha + ratio * 0.5);
-          // High-fidelity slow repulsion drift
-          p.x -= (dx / distance) * ratio * 0.5;
-          p.y -= (dy / distance) * ratio * 0.5;
-        } else {
-          // Slow breathing restoration
-          p.alpha += (p.baseAlpha - p.alpha) * 0.03;
-        }
-
-        ctx.fillStyle = p.color + p.alpha + ')';
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fill();
-      }
-
-      animationFrameId = requestAnimationFrame(draw);
-    };
-
-    draw();
-
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMoveLocal);
-      window.removeEventListener('resize', handleResize);
-      cancelAnimationFrame(animationFrameId);
-    };
-  }, []);
-
   return (
     <section
       ref={containerRef}
       id="home"
       className="relative min-h-screen flex flex-col justify-center items-center pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden select-none"
     >
-      {/* 🌌 Ambient Luxury Cosmos Universe Backdrop */}
-      <div className="absolute inset-0 pointer-events-none select-none z-0 overflow-hidden bg-transparent" id="ambient-cosmos-universe">
+      {/* Premium Elegant Soft Backdrop */}
+      <div className="absolute inset-0 pointer-events-none select-none z-0 overflow-hidden bg-transparent" id="ambient-digital-backdrop">
         
         {/* Layer 0: Analog Grain Film Noise */}
         <div 
@@ -171,94 +44,88 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenInquiry, darkMod
           }}
         />
 
-        {/* Layer 1: Parallax Ambient Gas/Orb Clouds (Slow drift & opposed translation) */}
+        {/* Layer 1: Parallax Soft Ambient Lighting (Opulent Luxury Studio Glows) */}
         <div 
           className="absolute inset-0 transition-transform duration-[1200ms] ease-out pointer-events-none"
           style={{
             transform: `translate(${mousePosition.x * -0.4}px, ${mousePosition.y * -0.4}px)`,
           }}
         >
-          {/* Main Royal Gold core glowing cloud */}
+          {/* Studio Warm Gold Ambient Light Core */}
           <motion.div
             animate={{
-              x: [0, 50, -30, 0],
-              y: [0, -30, 40, 0],
-              scale: [1, 1.06, 0.94, 1],
+              x: [0, 40, -20, 0],
+              y: [0, -20, 30, 0],
+              scale: [1, 1.05, 0.95, 1],
             }}
             transition={{
               duration: 25,
               repeat: Infinity,
               ease: "easeInOut",
             }}
-            className="absolute top-[-8%] left-[22%] w-[850px] h-[520px] rounded-full bg-[radial-gradient(circle,rgba(214,177,107,0.14)_0%,rgba(214,177,107,0.01)_55%,rgba(0,0,0,0)_75%)] dark:bg-[radial-gradient(circle,rgba(214,177,107,0.08)_0%,rgba(214,177,107,0.005)_55%,rgba(0,0,0,0)_75%)] blur-[40px]"
+            className="absolute top-[-10%] left-[20%] w-[900px] h-[550px] rounded-full bg-[radial-gradient(circle,rgba(214,177,107,0.12)_0%,rgba(214,177,107,0.01)_50%,rgba(0,0,0,0)_70%)] dark:bg-[radial-gradient(circle,rgba(214,177,107,0.06)_0%,rgba(214,177,107,0.003)_50%,rgba(0,0,0,0)_70%)] blur-[50px]"
           />
 
-          {/* Sitora Light Blue / Slate glowing cosmic atmospheric layer */}
+          {/* Studio Deep Blue Slate Accent Shadow */}
           <motion.div
             animate={{
-              x: [0, -50, 40, 0],
-              y: [0, 40, -30, 0],
-              scale: [1, 0.95, 1.05, 1],
+              x: [0, -40, 30, 0],
+              y: [0, 30, -20, 0],
+              scale: [1, 0.96, 1.04, 1],
             }}
             transition={{
               duration: 30,
               repeat: Infinity,
               ease: "easeInOut",
             }}
-            className="absolute bottom-[-5%] right-[12%] w-[750px] h-[480px] rounded-full bg-[radial-gradient(circle,rgba(126,212,255,0.12)_0%,rgba(126,212,255,0.01)_50%,rgba(0,0,0,0)_70%)] dark:bg-[radial-gradient(circle,rgba(126,212,255,0.06)_0%,rgba(126,212,255,0.002)_50%,rgba(0,0,0,0)_70%)] blur-[45px]"
+            className="absolute bottom-[-8%] right-[10%] w-[800px] h-[500px] rounded-full bg-[radial-gradient(circle,rgba(126,212,255,0.08)_0%,rgba(126,212,255,0.01)_45%,rgba(0,0,0,0)_65%)] dark:bg-[radial-gradient(circle,rgba(126,212,255,0.04)_0%,rgba(126,212,255,0.001)_45%,rgba(0,0,0,0)_65%)] blur-[55px]"
           />
         </div>
 
-        {/* Layer 2: Slow Moving Volumetric Light Cones/Rays (Cinematic fog-filtering) */}
+        {/* Layer 2: Slow Volumetric Ambient Studio Light Rays (Cinematic Atmosphere) */}
         <div 
           className="absolute inset-0 mix-blend-screen pointer-events-none"
           style={{
             transform: `translate(${mousePosition.x * 0.12}px, ${mousePosition.y * 0.12}px)`,
           }}
         >
-          {/* Subtle Left Gold Beam */}
+          {/* Left Warm Lighting Ray */}
           <motion.div 
             animate={{
-              opacity: [0.12, 0.3, 0.12],
-              rotate: [-14, -9, -14],
+              opacity: [0.15, 0.35, 0.15],
+              rotate: [-12, -8, -12],
             }}
             transition={{
-              duration: 16,
+              duration: 18,
               repeat: Infinity,
               ease: "easeInOut",
             }}
             style={{ transformOrigin: 'top left' }}
-            className="absolute -top-[40%] left-[10%] w-[38%] h-[180%] bg-gradient-to-b from-[#D6B16B]/[0.045] via-[#D6B16B]/[0.01] to-transparent blur-[70px]" 
+            className="absolute -top-[45%] left-[8%] w-[40%] h-[185%] bg-gradient-to-b from-[#D6B16B]/[0.035] via-[#D6B16B]/[0.008] to-transparent blur-[80px]" 
           />
 
-          {/* Subtle Right Sapphire Beam */}
+          {/* Right Sapphire/Blue Lighting Ray */}
           <motion.div 
             animate={{
-              opacity: [0.1, 0.25, 0.1],
-              rotate: [12, 16, 12],
+              opacity: [0.12, 0.28, 0.12],
+              rotate: [10, 14, 10],
             }}
             transition={{
-              duration: 20,
+              duration: 22,
               repeat: Infinity,
               ease: "easeInOut",
             }}
             style={{ transformOrigin: 'top right' }}
-            className="absolute -top-[40%] right-[8%] w-[35%] h-[190%] bg-gradient-to-b from-[#7ED4FF]/[0.035] via-[#7ED4FF]/[0.005] to-transparent blur-[75px]" 
+            className="absolute -top-[45%] right-[6%] w-[38%] h-[195%] bg-gradient-to-b from-[#7ED4FF]/[0.025] via-[#7ED4FF]/[0.003] to-transparent blur-[85px]" 
           />
         </div>
 
-        {/* Layer 3: Interactive Physics Canvas System (Rendered in useEffect) */}
-        <canvas 
-          ref={canvasRef} 
-          className="absolute inset-0 w-full h-full object-cover mix-blend-screen opacity-[0.75] dark:opacity-[0.88]"
-        />
-
-        {/* Layer 4: Linear Dynamic Geometry Grid */}
+        {/* Layer 3: Linear Dynamic Architectural Grid */}
         <div 
           className={`absolute inset-0 bg-[linear-gradient(rgba(214,177,107,0.01)_1px,transparent_1px),linear-gradient(90deg,rgba(214,177,107,0.01)_1px,transparent_1px)] bg-[size:50px_50px] pointer-events-none ${
             darkMode ? 'opacity-[0.75]' : 'opacity-[0.1]'
           }`}
-          id="hero-ambient-cosmos-grid"
+          id="hero-ambient-digital-grid"
         />
       </div>
 
