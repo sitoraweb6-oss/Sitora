@@ -10,7 +10,6 @@ import { AnimatePresence, motion } from 'motion/react';
 import { ARTICLES_DATA } from './data';
 
 // Components
-import { CinematicIntro } from './components/CinematicIntro';
 import { Header } from './components/Header';
 import { HeroSection } from './components/HeroSection';
 import { StatsSection } from './components/StatsSection';
@@ -58,12 +57,6 @@ export default function App() {
   const [darkMode, setDarkMode] = useState<boolean>(() => {
     const saved = localStorage.getItem('sitora_theme_preference');
     return saved !== 'light'; // Default is true (dark) if not set
-  });
-
-  const [introComplete, setIntroComplete] = useState<boolean>(() => {
-    // Session state check to ensure returning visitors get straight to business
-    const finished = sessionStorage.getItem('sitora_session_intro_done');
-    return finished === 'true';
   });
 
   const [inquiryOpen, setInquiryOpen] = useState(false);
@@ -413,11 +406,6 @@ export default function App() {
     setInquiryOpen(true);
   };
 
-  const handleIntroComplete = () => {
-    sessionStorage.setItem('sitora_session_intro_done', 'true');
-    setIntroComplete(true);
-  };
-
   // Custom controlled set article handler for clean URL support
   const handleSetActiveArticleId = (id: string | null) => {
     setActiveArticleId(id);
@@ -472,19 +460,11 @@ export default function App() {
       }`}
       id="sitora-app-root"
     >
-      <AnimatePresence mode="wait">
-        {!introComplete ? (
-          <CinematicIntro key="cinematic-intro" onComplete={handleIntroComplete} />
-        ) : (
-          <motion.div
-            key="main-web-experience"
-            initial={{ opacity: 0, filter: 'blur(15px)' }}
-            animate={{ opacity: 1, filter: 'blur(0px)' }}
-            transition={{ duration: 1, ease: 'easeOut' }}
-            className="flex flex-col min-h-screen relative"
-            id="experience-wrapper"
-          >
-            {/* Immersive UI Radial Glow Effects */}
+      <div
+        className="flex flex-col min-h-screen relative"
+        id="experience-wrapper"
+      >
+        {/* Immersive UI Radial Glow Effects */}
             {darkMode && (
               <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden" id="immersive-glow-backdrops">
                 <div className="absolute top-[-10%] left-[-10%] w-[65%] h-[65%] bg-[#D6B16B] opacity-[0.22] blur-[150px] rounded-full animate-glow-gold" />
@@ -607,9 +587,7 @@ export default function App() {
             {/* Sticky Floating WhatsApp portal widget */}
             <FloatingWhatsApp />
 
-          </motion.div>
-        )}
-      </AnimatePresence>
+          </div>
     </div>
   );
 }
