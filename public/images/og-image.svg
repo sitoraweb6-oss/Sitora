@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="100%" height="100%">
+  <defs>
+    <!-- Premium Metallic Gold Gradient -->
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D6B16B" />
+      <stop offset="50%" stop-color="#E4C78A" />
+      <stop offset="100%" stop-color="#B88A44" />
+    </linearGradient>
+
+    <!-- Deep Cosmic Sapphire Blue Gradient -->
+    <linearGradient id="sapphire" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7ED4FF" />
+      <stop offset="100%" stop-color="#4FAFE8" />
+    </linearGradient>
+    
+    <!-- Warm Aura Glow Gradient -->
+    <radialGradient id="aurora" cx="70%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="rgba(214, 177, 107, 0.12)" />
+      <stop offset="50%" stop-color="rgba(126, 212, 255, 0.04)" />
+      <stop offset="100%" stop-color="rgba(0, 0, 0, 0)" />
+    </radialGradient>
+
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="15" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Deep Slate Cosmic Canvas Base -->
+  <rect width="100%" height="100%" fill="#05070A" />
+
+  <!-- Aurora Glow Space clouds -->
+  <rect width="100%" height="100%" fill="url(#aurora)" />
+
+  <!-- Diagonal Elegant Geometry Grid Lines -->
+  <path d="M -100 200 L 1300 500" stroke="rgba(214,177,107,0.04)" stroke-width="1" />
+  <path d="M -100 300 L 1300 600" stroke="rgba(214,177,107,0.04)" stroke-width="1" />
+  <path d="M -100 400 L 1300 700" stroke="rgba(214,177,107,0.04)" stroke-width="1" />
+  
+  <!-- Vertical Structural Grid dividers -->
+  <line x1="150" y1="0" x2="150" y2="630" stroke="rgba(255,255,255,0.02)" stroke-width="1" />
+  <line x1="1050" y1="0" x2="1050" y2="630" stroke="rgba(255,255,255,0.02)" stroke-width="1" />
+
+  <!-- Orbit rings in absolute center-right -->
+  <g transform="translate(850, 315)">
+    <circle r="220" fill="none" stroke="url(#sapphire)" stroke-width="1" opacity="0.2" stroke-dasharray="8,8" />
+    <circle r="170" fill="none" stroke="url(#gold)" stroke-width="1.5" opacity="0.3" />
+    <circle r="120" fill="none" stroke="url(#gold)" stroke-width="3" stroke-dasharray="30,120" opacity="0.6" filter="url(#glow)" />
+    <circle r="80" fill="none" stroke="url(#sapphire)" stroke-width="2" opacity="0.4" />
+    
+    <!-- Central Glowing Core Sphere -->
+    <circle r="30" fill="url(#gold)" opacity="0.9" filter="url(#glow)" />
+    <circle r="8" fill="#FFFFFF" />
+  </g>
+
+  <!-- Content text blocks on left -->
+  <g transform="translate(120, 0)">
+    <!-- Brand badge -->
+    <g transform="translate(0, 140)">
+      <rect width="280" height="32" rx="16" fill="rgba(255,255,255,0.03)" stroke="rgba(214,177,107,0.3)" stroke-width="1" />
+      <circle cx="20" cy="16" r="4" fill="#10B981" />
+      <text x="36" y="20" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="800" fill="#E4C78A" letter-spacing="0.2em">PREMIUM AGENT WORKGROUND</text>
+    </g>
+
+    <!-- Headline: Premium Web Designs -->
+    <text x="0" y="240" font-family="system-ui, -apple-system, sans-serif" font-size="48" font-weight="900" fill="#FFFFFF" letter-spacing="-0.02em">
+      SITORA WEB
+    </text>
+
+    <text x="0" y="300" font-family="system-ui, -apple-system, sans-serif" font-size="34" font-weight="800" fill="url(#gold)" letter-spacing="-0.01em">
+      WEBSITE DEVELOPMENT &amp; MARKETING
+    </text>
+
+    <!-- Subheading -->
+    <text x="0" y="360" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="400" fill="#9CA3AF" width="600">
+      Hand-coding high-speed commercial websites &amp; driving
+    </text>
+    <text x="0" y="390" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="400" fill="#9CA3AF" width="600">
+      qualified conversion streams in Bangladesh &amp; worldwide.
+    </text>
+
+    <!-- Features badges at the bottom -->
+    <g transform="translate(0, 460)">
+      <!-- Item 1 -->
+      <text x="0" y="16" font-family="monospace" font-size="12" font-weight="700" fill="#7ED4FF" letter-spacing="0.1em">// FAST SPEED</text>
+      <text x="0" y="36" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="700" fill="#FFFFFF">100% Core Web Vitals</text>
+
+      <!-- Item 2 -->
+      <text x="210" y="16" font-family="monospace" font-size="12" font-weight="700" fill="#E4C78A" letter-spacing="0.1em">// INTEGRATIONS</text>
+      <text x="210" y="36" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="700" fill="#FFFFFF">Meta Server CAPI &amp; Pixel</text>
+
+      <!-- Item 3 -->
+      <text x="490" y="16" font-family="monospace" font-size="12" font-weight="700" fill="#7ED4FF" letter-spacing="0.1em">// TARGETED ROI</text>
+      <text x="490" y="36" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="700" fill="#FFFFFF">Zero-bounce Sales Portals</text>
+    </g>
+  </g>
+
+  <!-- Footer tiny link -->
+  <text x="120" y="580" font-family="monospace" font-size="11" fill="rgba(255,255,255,0.25)" letter-spacing="0.05em">HTTPS://SITORAWEB.COM // NARAYANGANJ, DHAKA, BANGLADESH</text>
+</svg>

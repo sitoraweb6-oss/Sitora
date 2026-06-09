@@ -1,0 +1,6 @@
+# robots.txt for Sitora Web (Sitora SEO Engine)
+User-agent: *
+Allow: /
+
+# Canonical Sitemap URL
+Sitemap: https://sitoraweb.com/sitemap.xml
