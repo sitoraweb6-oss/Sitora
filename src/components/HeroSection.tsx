@@ -51,7 +51,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenInquiry, darkMod
     <section
       ref={containerRef}
       id="home"
-      className="relative min-h-screen flex items-center justify-center pt-32 pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden select-none"
+      className="relative min-h-[85vh] lg:min-h-screen flex items-center justify-center pt-24 pb-16 sm:pt-32 sm:pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden select-none"
     >
       {/* Premium elegant gold/black ambient lighting backdrop */}
       <div className="absolute inset-0 pointer-events-none select-none z-0 overflow-hidden bg-transparent" id="ambient-digital-backdrop">
@@ -145,7 +145,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenInquiry, darkMod
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full border self-start ${
+            className={`inline-flex items-center gap-2 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full border self-start ${
               darkMode 
                 ? 'bg-neutral-950/80 border-neutral-800/80 text-neutral-300' 
                 : 'bg-neutral-100/80 border-neutral-300/80 text-neutral-700'
@@ -156,7 +156,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenInquiry, darkMod
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D6B16B] opacity-75"></span>
               <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#D6B16B]"></span>
             </span>
-            <span className="text-[10px] md:text-xs uppercase tracking-[0.2em] font-mono leading-none">
+            <span className="text-[9px] sm:text-xs uppercase tracking-[0.2em] font-mono leading-none">
               Trusted by 300+ Clients &amp; Organizations
             </span>
           </motion.div>
@@ -167,7 +167,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenInquiry, darkMod
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className={`font-sans text-3xl sm:text-5xl md:text-[54px] font-black tracking-tight leading-[1.1] sm:leading-[1.05] uppercase ${
+              className={`font-sans text-2xl sm:text-5xl md:text-[54px] font-black tracking-tight leading-[1.2] sm:leading-[1.05] uppercase max-w-[430px] sm:max-w-none ${
                 darkMode ? 'text-white' : 'text-[#111827]'
               }`}
               id="hero-brand-statement"
@@ -180,7 +180,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenInquiry, darkMod
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
-              className={`font-sans text-base sm:text-2xl font-black tracking-tight uppercase leading-snug ${
+              className={`font-sans text-xs sm:text-2xl font-black tracking-tight uppercase leading-snug ${
                 darkMode ? 'text-neutral-200' : 'text-neutral-800'
               }`}
             >
@@ -230,12 +230,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenInquiry, darkMod
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.4 }}
-            className="flex flex-wrap gap-4 pt-4"
+            className="flex flex-col sm:flex-row gap-4 pt-4 w-full sm:w-auto"
             id="hero-cta-button-block"
           >
             <button
               onClick={() => onOpenInquiry('web-dev')}
-              className="group flex items-center gap-2 py-4 px-8 rounded-xl font-sans text-xs font-bold uppercase tracking-wider text-neutral-950 bg-[#D6B16B] hover:bg-[#ebd5ad] hover:scale-[1.03] transition-all duration-300 shadow-[0_0_35px_rgba(214,177,107,0.22)] cursor-pointer"
+              className="group flex items-center justify-center gap-2 py-4 px-8 rounded-xl font-sans text-xs font-bold uppercase tracking-wider text-neutral-950 bg-[#D6B16B] hover:bg-[#ebd5ad] hover:scale-[1.03] transition-all duration-300 shadow-[0_0_35px_rgba(214,177,107,0.22)] cursor-pointer w-full sm:w-auto"
               id="hero-primary-consult-cta"
             >
               <span>Get a Free Consultation</span>
@@ -244,7 +244,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenInquiry, darkMod
 
             <button
               onClick={handleScrollToProjects}
-              className={`group flex items-center gap-2 py-4 px-8 rounded-xl font-sans text-xs font-bold uppercase tracking-wider border transition-all duration-300 cursor-pointer ${
+              className={`group flex items-center justify-center gap-2 py-4 px-8 rounded-xl font-sans text-xs font-bold uppercase tracking-wider border transition-all duration-300 cursor-pointer w-full sm:w-auto ${
                 darkMode
                   ? 'bg-neutral-900/60 border-neutral-800 text-neutral-300 hover:border-[#D6B16B]/60 hover:text-[#D6B16B]'
                   : 'bg-white border-neutral-200 text-neutral-700 hover:border-[#D6B16B] hover:text-[#D6B16B]'
@@ -258,10 +258,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenInquiry, darkMod
         </div>
 
         {/* Right Side: Dense, Premium Floating Operational Dashboard Cards */}
-        <div className="col-span-1 lg:col-span-5 relative min-h-[500px] flex items-center justify-center lg:mt-0 mt-10" id="hero-right-contents">
+        <div className="col-span-1 lg:col-span-5 relative min-h-[auto] lg:min-h-[500px] flex flex-col items-center justify-center lg:mt-0 mt-10" id="hero-right-contents">
           
+          {/* DESKTOP ONLY: 3D Parallax & Floating Layered Widgets */}
           <div 
-            className="relative w-full h-full min-h-[460px] "
+            className="hidden lg:block relative w-full h-full min-h-[460px]"
             style={{
               transform: `perspective(1000px) rotateX(${mousePosition.y * -0.2}deg) rotateY(${mousePosition.x * 0.2}deg)`,
               transition: 'transform 0.2s ease-out'
@@ -392,6 +393,93 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenInquiry, darkMod
             </motion.div>
 
           </div>
+
+          {/* MOBILE ONLY: Optimized, Clean, High-Contrast Stacked Modules to avoid overlapping & clipping */}
+          <div className="block lg:hidden w-full space-y-4" id="hero-mobile-stacked-showcase">
+            
+            {/* Module 1: Performance Metrics */}
+            <div className={`p-5 rounded-xl border ${darkMode ? 'bg-[#0B1016]/95 border-neutral-900 shadow-2xl' : 'bg-white border-neutral-200 shadow-sm'} space-y-3`}>
+              <div className="flex items-center justify-between border-b pb-2 mb-2 border-neutral-905" id="perf-metrics-header">
+                <span className="text-[10px] font-mono text-[#D6B16B] uppercase tracking-wider font-extrabold flex items-center gap-1.5">
+                  <Zap size={11} /> Performance Metrics
+                </span>
+                <span className="text-[9px] font-mono text-[#D6B16B] bg-[#D6B16B]/10 py-0.5 px-2 rounded">
+                  99/100 SPEED
+                </span>
+              </div>
+              <div className="grid grid-cols-3 gap-3 text-center">
+                <div className="bg-neutral-950/40 border border-neutral-900/30 p-2.5 rounded-xl">
+                  <span className="text-[8px] font-mono text-neutral-500 uppercase block mb-0.5">Speed</span>
+                  <span className="text-xs font-mono font-bold text-[#D6B16B]">99/100</span>
+                </div>
+                <div className="bg-neutral-950/40 border border-neutral-900/30 p-2.5 rounded-xl">
+                  <span className="text-[8px] font-mono text-neutral-500 uppercase block mb-0.5">Bounce</span>
+                  <span className="text-xs font-mono font-bold text-emerald-400">-42%</span>
+                </div>
+                <div className="bg-neutral-950/40 border border-[#D6B16B]/20 bg-[#D6B16B]/[0.02] p-2.5 rounded-xl">
+                  <span className="text-[8px] font-mono text-neutral-500 uppercase block mb-0.5">CAPI Synced</span>
+                  <span className="text-xs font-mono font-bold text-[#D6B16B]">100%</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Module 2: Technical Stack */}
+            <div className={`p-5 rounded-xl border ${darkMode ? 'bg-[#0B1016]/95 border-neutral-900' : 'bg-white border-neutral-200'} space-y-3`}>
+              <span className="text-[10px] font-mono text-[#D6B16B] uppercase tracking-wider block font-extrabold flex items-center gap-1.5">
+                <Cpu size={12} /> Technical Stack
+              </span>
+              <div className="grid grid-cols-2 gap-2 text-[10px] sm:text-[11px] font-sans text-neutral-300">
+                <div className="flex items-center gap-1.5">
+                  <CheckCircle2 size={10} className="text-[#D6B16B]" />
+                  <span>React 18 &amp; Next.js</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <CheckCircle2 size={10} className="text-[#D6B16B]" />
+                  <span>Tailwind v4 Optimized</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <CheckCircle2 size={10} className="text-[#D6B16B]" />
+                  <span>Durable Persistence</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <CheckCircle2 size={10} className="text-emerald-500" />
+                  <span className="text-[#D6B16B] font-bold">Lighthouse 98+</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Module 3: Meta CAPI Stream */}
+            <div className={`p-5 rounded-xl border ${darkMode ? 'bg-[#0B1016]/95 border-neutral-900' : 'bg-white border-neutral-200'} space-y-3`}>
+              <span className="text-[10px] font-mono text-[#D6B16B] uppercase block font-extrabold flex items-center gap-1.5">
+                <Activity size={12} /> Meta CAPI Stream
+              </span>
+              <div className="grid grid-cols-3 gap-2 text-[10px]">
+                <div className="flex flex-col">
+                  <span className="text-neutral-500 text-[8px] uppercase">Attr. Rate</span>
+                  <span className="font-mono text-emerald-400 font-black text-xs sm:text-sm mt-0.5">99.8%</span>
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-neutral-500 text-[8px] uppercase">Deduplication</span>
+                  <span className="font-mono text-white font-black text-xs sm:text-sm mt-0.5">Active</span>
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-neutral-500 text-[8px] uppercase">Quality</span>
+                  <span className="font-mono text-[#D6B16B] font-black text-xs sm:text-sm mt-0.5">9.2/10</span>
+                </div>
+              </div>
+              <div className="h-1 bg-neutral-900 rounded-full overflow-hidden mt-1">
+                <div className="h-full bg-gradient-to-r from-[#D6B16B] to-emerald-400 w-[95%] rounded-full" />
+              </div>
+            </div>
+
+            {/* Module 4: Server Status */}
+            <div className={`p-3.5 rounded-xl border ${darkMode ? 'bg-neutral-950/80 border-neutral-900' : 'bg-[#FAFBFC] border-neutral-200'} flex items-center justify-between text-[9px] font-mono text-neutral-500`}>
+              <span className="flex items-center gap-1.5"><Activity size={10} className="text-[#D6B16B]" /> SECURE SERVER CONNECTED</span>
+              <span className="text-[#D6B16B] font-bold text-right">REF_SSL_OK // V2</span>
+            </div>
+
+          </div>
+
         </div>
 
       </div>

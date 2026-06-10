@@ -25,6 +25,11 @@ import { InquiryForm, FloatingWhatsApp } from './components/InquiryForm';
 import { BlogPage } from './components/BlogPage';
 import { PortfolioPage } from './components/PortfolioPage';
 import { ProposalPlanner } from './components/ProposalPlanner';
+import { IndustrySolutionsExplorer } from './components/IndustrySolutionsExplorer';
+import { WebsiteBlueprintGenerator } from './components/WebsiteBlueprintGenerator';
+import { TransformationShowcase } from './components/TransformationShowcase';
+import { DigitalGrowthAudit } from './components/DigitalGrowthAudit';
+import { GrowthJourneyEngine } from './components/GrowthJourneyEngine';
 
 // SEO URL Slug Mappers
 const SLUG_TO_ID_MAP: Record<string, string> = {
@@ -521,6 +526,12 @@ export default function App() {
                       darkMode={darkMode} 
                     />
                     
+                    {/* Sitora Web Industry Solutions Explorer */}
+                    <IndustrySolutionsExplorer 
+                      darkMode={darkMode}
+                      onOpenInquiry={handleOpenInquiry}
+                    />
+                    
                     {/* Apple inspired premium pricing cards */}
                     <PricingSection 
                       darkMode={darkMode}
@@ -532,11 +543,36 @@ export default function App() {
                       <ProposalPlanner darkMode={darkMode} />
                     </section>
                     
+                    {/* Sitora Web tailored Website Blueprint Generator */}
+                    <WebsiteBlueprintGenerator 
+                      darkMode={darkMode}
+                      onOpenInquiry={handleOpenInquiry}
+                    />
+                    
                     {/* Crafted Experiences editorial list */}
                     <CraftedExperiencesSection 
                       darkMode={darkMode}
                       onOpenInquiry={handleOpenInquiry} 
                       onExplorePortfolio={() => handleNavigate('portfolio')}
+                    />
+                    
+                    {/* Sitora Web interactive Before After Transformation Showcase */}
+                    <TransformationShowcase 
+                      darkMode={darkMode}
+                      onOpenInquiry={handleOpenInquiry}
+                      onExplorePortfolio={() => handleNavigate('portfolio')}
+                    />
+                    
+                    {/* Sitora Web interactive Digital Growth Audit Engine */}
+                    <DigitalGrowthAudit 
+                      darkMode={darkMode}
+                      onOpenInquiry={handleOpenInquiry}
+                    />
+                    
+                    {/* Sitora Web tailored luxury Growth Journey Engine */}
+                    <GrowthJourneyEngine 
+                      darkMode={darkMode}
+                      onOpenInquiry={handleOpenInquiry}
                     />
                     
                     {/* Client stories trust testimonials */}

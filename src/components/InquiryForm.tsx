@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Mail, Phone, ArrowUpRight, Check, X, Send } from 'lucide-react';
 
@@ -492,27 +492,56 @@ Inquiry submitted via *Sitora Web* platform.`;
 // WhatsApp floating overlay button
 export const FloatingWhatsApp: React.FC = () => {
   const whatsappUrl = 'https://wa.me/8801629586290?text=Hi%20Sitora%20Web%2C%20I%20am%20interested%20in%20building%20a%20premium%20digital%20experience%20with%20your%20team%21';
+  const [visible, setVisible] = useState(true);
+  const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      if (currentScrollY < 100) {
+        setVisible(true);
+      } else if (currentScrollY > lastScrollY.current) {
+        // scrolling down -> hide
+        setVisible(false);
+      } else {
+        // scrolling up -> show
+        setVisible(true);
+      }
+      lastScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <motion.a
-      href={whatsappUrl}
-      target="_blank"
-      rel="noopener noreferrer"
-      whileHover={{ scale: 1.1, y: -2 }}
-      whileTap={{ scale: 0.9 }}
-      className="fixed bottom-6 right-6 z-40 flex items-center justify-center w-14 h-14 bg-emerald-500 text-white rounded-full shadow-2xl shadow-emerald-500/20 hover:bg-emerald-400 transition-colors cursor-pointer"
-      id="whatsapp-floating-trigger"
-      aria-label="Connect via WhatsApp"
-    >
-      <svg
-        viewBox="0 0 24 24"
-        width="28"
-        height="28"
-        fill="currentColor"
-        id="whatsapp-icon-svg"
-      >
-        <path d="M12.031 2C6.49 2 2 6.47 2 12.01c0 1.91.53 3.69 1.45 5.23L2 22l4.91-1.39c1.47.8 3.14 1.26 4.9 1.26 5.54 0 10.03-4.47 10.03-10.01C21.84 6.47 17.57 2 12.03 2zm5.72 13.91c-.24.68-1.21 1.24-1.68 1.29-.46.06-.9.23-2.91-.59-2.58-1.05-4.22-3.66-4.35-3.83-.13-.17-1.02-1.36-1.02-2.59 0-1.23.64-1.83.87-2.07.23-.24.51-.3.68-.3.17 0 .34.01.49.02.16.01.37-.06.58.44.22.52.75 1.83.82 1.97.07.14.12.31.02.51-.1.2-.15.31-.3.49-.15.18-.32.4-.46.54-.16.16-.33.34-.14.67.19.32.84 1.39 1.81 2.25.97.86 1.79 1.12 2.05 1.25.26.13.41.11.56-.06.15-.17.65-.76.82-.96.17-.2.34-.17.58-.09.24.08 1.54.73 1.8.86.26.13.43.19.49.3.06.11.06.63-.18 1.31z" />
-      </svg>
-    </motion.a>
+    <AnimatePresence>
+      {visible && (
+        <motion.a
+          href={whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.8 }}
+          whileHover={{ scale: 1.1, y: -2 }}
+          whileTap={{ scale: 0.9 }}
+          transition={{ duration: 0.2 }}
+          className="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-40 flex items-center justify-center w-14 h-14 bg-emerald-500 text-white rounded-full shadow-2xl shadow-emerald-500/20 hover:bg-emerald-400 transition-colors cursor-pointer"
+          id="whatsapp-floating-trigger"
+          aria-label="Connect via WhatsApp"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            width="28"
+            height="28"
+            fill="currentColor"
+            id="whatsapp-icon-svg"
+          >
+            <path d="M12.031 2C6.49 2 2 6.47 2 12.01c0 1.91.53 3.69 1.45 5.23L2 22l4.91-1.39c1.47.8 3.14 1.26 4.9 1.26 5.54 0 10.03-4.47 10.03-10.01C21.84 6.47 17.57 2 12.03 2zm5.72 13.91c-.24.68-1.21 1.24-1.68 1.29-.46.06-.9.23-2.91-.59-2.58-1.05-4.22-3.66-4.35-3.83-.13-.17-1.02-1.36-1.02-2.59 0-1.23.64-1.83.87-2.07.23-.24.51-.3.68-.3.17 0 .34.01.49.02.16.01.37-.06.58.44.22.52.75 1.83.82 1.97.07.14.12.31.02.51-.1.2-.15.31-.3.49-.15.18-.32.4-.46.54-.16.16-.33.34-.14.67.19.32.84 1.39 1.81 2.25.97.86 1.79 1.12 2.05 1.25.26.13.41.11.56-.06.15-.17.65-.76.82-.96.17-.2.34-.17.58-.09.24.08 1.54.73 1.8.86.26.13.43.19.49.3.06.11.06.63-.18 1.31z" />
+          </svg>
+        </motion.a>
+      )}
+    </AnimatePresence>
   );
 };
