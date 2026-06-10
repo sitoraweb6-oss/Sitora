@@ -455,6 +455,25 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({
                             {project.shortDesc}
                           </p>
 
+                          {/* Modern Technical Telemetry Panel */}
+                          <div className={`grid grid-cols-2 gap-2 p-2.5 rounded-xl border font-mono text-[9px] uppercase tracking-wider ${
+                            darkMode 
+                              ? 'bg-[#0b1016]/70 border-neutral-900/40 text-neutral-400 shadow-[inset_0_1px_1px_rgba(255,255,255,0.01)]' 
+                              : 'bg-neutral-50 border-neutral-100 text-neutral-600'
+                          }`}>
+                            <div className="flex flex-col gap-0.5 border-r border-neutral-200/50 dark:border-neutral-900 pr-2">
+                              <span className="text-[7.5px] text-neutral-500 font-mono">STANDARDS STATUS</span>
+                              <span className="font-sans font-bold text-emerald-500 flex items-center gap-1">
+                                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                                VERIFIED
+                              </span>
+                            </div>
+                            <div className="flex flex-col gap-0.5 pl-1">
+                              <span className="text-[7.5px] text-neutral-500 font-mono">UX VELOCITY</span>
+                              <span className="font-sans font-bold text-[#D6B16B]">{project.metric || 'OPTIMIZED'}</span>
+                            </div>
+                          </div>
+
                           {/* Tags */}
                           <div className="flex flex-wrap gap-1 pt-1" id={`p-card-tags-${project.id}`}>
                             {project.tags.slice(0, 3).map((tag) => (

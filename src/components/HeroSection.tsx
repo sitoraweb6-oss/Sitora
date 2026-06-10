@@ -75,31 +75,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenInquiry, darkMod
           }}
         >
           {/* Opulent Warm Gold Ambient Glow */}
-          <motion.div
-            animate={{
-              x: [0, 30, -15, 0],
-              y: [0, -15, 20, 0],
-              scale: [1, 1.03, 0.97, 1],
-            }}
-            transition={{
-              duration: 22,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
+          <div
             className="absolute top-[-15%] left-[10%] w-[950px] h-[600px] rounded-full bg-[radial-gradient(circle,rgba(214,177,107,0.11)_0%,rgba(214,177,107,0.01)_50%,rgba(0,0,0,0)_70%)] dark:bg-[radial-gradient(circle,rgba(214,177,107,0.05)_0%,rgba(214,177,107,0.002)_50%,rgba(0,0,0,0)_70%)] blur-[60px]"
           />
 
-          <motion.div
-            animate={{
-              x: [0, -30, 20, 0],
-              y: [0, 20, -15, 0],
-              scale: [1, 0.97, 1.03, 1],
-            }}
-            transition={{
-              duration: 26,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
+          <div
             className="absolute bottom-[-10%] right-[15%] w-[850px] h-[550px] rounded-full bg-[radial-gradient(circle,rgba(214,177,107,0.08)_0%,rgba(214,177,107,0.008)_45%,rgba(0,0,0,0)_65%)] dark:bg-[radial-gradient(circle,rgba(214,177,107,0.03)_0%,rgba(214,177,107,0.001)_45%,rgba(0,0,0,0)_65%)] blur-[65px]"
           />
         </div>
@@ -112,17 +92,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenInquiry, darkMod
           }}
         >
           {/* Main Gold Light Ray */}
-          <motion.div 
-            animate={{
-              opacity: [0.12, 0.3, 0.12],
-              rotate: [-10, -6, -10],
-            }}
-            transition={{
-              duration: 20,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            style={{ transformOrigin: 'top left' }}
+          <div 
+            style={{ transformOrigin: 'top left', transform: 'rotate(-8deg)' }}
             className="absolute -top-[40%] left-[10%] w-[45%] h-[180%] bg-gradient-to-b from-[#D6B16B]/[0.035] via-[#D6B16B]/[0.008] to-transparent blur-[75px]" 
           />
         </div>
@@ -249,24 +220,24 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenInquiry, darkMod
           >
             <button
               onClick={() => onOpenInquiry('web-dev')}
-              className="group flex items-center justify-center gap-2 py-4 px-8 rounded-xl font-sans text-xs font-bold uppercase tracking-wider text-neutral-950 bg-[#D6B16B] hover:bg-[#ebd5ad] hover:scale-[1.03] transition-all duration-300 shadow-[0_0_35px_rgba(214,177,107,0.22)] cursor-pointer w-full sm:w-auto"
+              className="group flex items-center justify-center gap-2 py-4 px-8 rounded-xl font-sans text-xs font-bold uppercase tracking-wider text-neutral-950 bg-gradient-to-r from-[#D6B16B] via-[#eed8ac] to-[#D6B16B] bg-[size:200%_auto] hover:bg-right hover:scale-[1.02] active:scale-[0.97] transition-all duration-150 shadow-[0_0_20px_rgba(214,177,107,0.15)] hover:shadow-[0_0_35px_rgba(214,177,107,0.3)] cursor-pointer w-full sm:w-auto"
               id="hero-primary-consult-cta"
             >
               <span>{t('Get a Free Consultation')}</span>
-              <ArrowRight size={13} className="transition-transform duration-300 group-hover:translate-x-1" />
+              <ArrowRight size={13} className="transition-transform duration-150 group-hover:translate-x-1" />
             </button>
 
             <button
               onClick={handleScrollToProjects}
-              className={`group flex items-center justify-center gap-2 py-4 px-8 rounded-xl font-sans text-xs font-bold uppercase tracking-wider border transition-all duration-300 cursor-pointer w-full sm:w-auto ${
+              className={`group flex items-center justify-center gap-2 py-4 px-8 rounded-xl font-sans text-xs font-bold uppercase tracking-wider border active:scale-[0.97] transition-all duration-150 cursor-pointer w-full sm:w-auto ${
                 darkMode
-                  ? 'bg-neutral-900/60 border-neutral-800 text-neutral-300 hover:border-[#D6B16B]/60 hover:text-[#D6B16B]'
-                  : 'bg-white border-neutral-200 text-neutral-700 hover:border-[#D6B16B] hover:text-[#D6B16B]'
+                  ? 'bg-neutral-900/60 border-neutral-800 text-neutral-300 hover:border-[#D6B16B]/60 hover:text-[#D6B16B] hover:bg-neutral-900'
+                  : 'bg-white border-neutral-200 text-neutral-700 hover:border-[#D6B16B] hover:text-[#D6B16B] hover:bg-neutral-50'
               }`}
               id="hero-secondary-quote-cta"
             >
               <span>{language === 'bn' ? 'পোর্টফোলিও দেখুন' : 'View Projects'}</span>
-              <ChevronRight size={14} className="transition-transform duration-300 group-hover:translate-x-0.5" />
+              <ChevronRight size={14} className="transition-transform duration-150 group-hover:translate-x-0.5" />
             </button>
           </motion.div>
         </div>

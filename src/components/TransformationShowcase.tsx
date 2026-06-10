@@ -184,24 +184,35 @@ export const TransformationShowcase: React.FC<TransformationShowcaseProps> = ({
         </div>
 
         {/* Dynamic Scenario Selection Tabs */}
-        <div className="flex flex-wrap justify-center gap-2.5 mb-10" id="scenario-selector-tabs">
+        <div className="flex flex-wrap justify-center gap-1.5 sm:gap-2.5 mb-11" id="scenario-selector-tabs">
           {SCENARIOS.map((sc) => {
             const isActive = sc.id === activeScenarioId;
             return (
               <button
                 key={sc.id}
                 onClick={() => setActiveScenarioId(sc.id)}
-                className={`py-2 px-5 rounded-full font-sans text-xs font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer outline-none ${
-                  isActive 
-                    ? 'bg-[#D6B16B] text-neutral-950 shadow-[0_4px_12px_rgba(214,177,107,0.15)] scale-105' 
-                    : darkMode 
-                    ? 'border border-neutral-900 bg-neutral-950/50 text-neutral-400 hover:border-neutral-800 hover:text-white'
-                    : 'border border-neutral-200 bg-white text-neutral-600 hover:border-neutral-350 hover:text-neutral-900'
+                className={`relative py-2 px-5 rounded-full font-sans text-xs font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer outline-none ${
+                  !isActive && (darkMode 
+                    ? 'border border-neutral-900 bg-neutral-950/20 text-neutral-400 hover:border-neutral-800 hover:text-white' 
+                    : 'border border-neutral-100 bg-[#FAFBFC]/60 text-neutral-600 hover:border-neutral-250 hover:text-neutral-900')
                 }`}
                 aria-pressed={isActive}
                 id={`scenario-tab-${sc.id}`}
               >
-                {sc.name}
+                {isActive && (
+                  <motion.div
+                    layoutId="active-scenario-bg"
+                    className="absolute inset-x-0 inset-y-0 bg-[#D6B16B] rounded-full z-0 shadow-[0_3px_10px_rgba(214,177,107,0.15)]"
+                    transition={{ type: "spring", stiffness: 380, damping: 28 }}
+                  />
+                )}
+                <span className={`relative z-10 transition-colors duration-250 ${
+                  isActive 
+                    ? 'text-neutral-950 font-black' 
+                    : 'text-inherit'
+                }`}>
+                  {sc.name}
+                </span>
               </button>
             );
           })}
@@ -237,7 +248,7 @@ export const TransformationShowcase: React.FC<TransformationShowcaseProps> = ({
                     sitoraweb.com/aura-store
                   </div>
                   <div className="text-[#D6B16B]" id="after-chrome-indicator">
-                    <Sparkles size={13} className="animate-pulse" />
+                    <Sparkles size={13} />
                   </div>
                 </div>
 
@@ -370,7 +381,7 @@ export const TransformationShowcase: React.FC<TransformationShowcaseProps> = ({
                 {/* After Visual Label Footer */}
                 <div className="flex items-center justify-between border-t border-neutral-900 pt-3" id="after-panel-footer">
                   <div className="flex items-center gap-2">
-                    <div className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                    <div className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
                     <span className="font-mono text-[8px] text-neutral-450 uppercase tracking-widest hidden sm:inline">
                       99% Page Speed Matrix
                     </span>

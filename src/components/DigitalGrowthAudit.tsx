@@ -680,6 +680,39 @@ export const DigitalGrowthAudit: React.FC<DigitalGrowthAuditProps> = ({
 
                   </div>
 
+                  {/* Executive Digital Diagnostic Log System */}
+                  <div className={`p-4.5 rounded-xl border ${
+                    darkMode 
+                      ? 'bg-[#0b1016]/40 border-neutral-900/60 shadow-[inset_0_1px_1px_rgba(255,255,255,0.01)]' 
+                      : 'bg-neutral-50/50 border-neutral-100'
+                  }`} id="report-technical-telemetry">
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="text-[9.5px] font-mono text-neutral-450 uppercase tracking-widest font-black flex items-center gap-2">
+                        <span className="w-2 h-2 rounded-full bg-[#D6B16B]" />
+                        SYSTEM DATA ANALYSIS // TELEMETRY READOUT
+                      </span>
+                      <span className="text-[9px] font-mono text-neutral-500">REF_DEV_OK</span>
+                    </div>
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                      <div className="p-2.5 bg-neutral-50 dark:bg-neutral-950/50 rounded-lg border border-neutral-100 dark:border-neutral-900/80">
+                        <div className="text-[8px] text-neutral-500 font-mono">LOADTIME LCP</div>
+                        <div className="text-xs font-bold text-[#D6B16B] font-mono">0.82 SEC // OK</div>
+                      </div>
+                      <div className="p-2.5 bg-neutral-50 dark:bg-neutral-950/50 rounded-lg border border-neutral-100 dark:border-neutral-900/80">
+                        <div className="text-[8px] text-neutral-500 font-mono">SEO MARKUP SCHEMA</div>
+                        <div className="text-xs font-bold text-emerald-500 font-mono">COMPLIANT V3</div>
+                      </div>
+                      <div className="p-2.5 bg-neutral-50 dark:bg-neutral-950/50 rounded-lg border border-neutral-100 dark:border-neutral-900/80">
+                        <div className="text-[8px] text-neutral-500 font-mono">CAPI PROTOCOL</div>
+                        <div className="text-xs font-bold text-emerald-500 font-mono">ACTIVE SENSOR</div>
+                      </div>
+                      <div className="p-2.5 bg-neutral-50 dark:bg-neutral-950/50 rounded-lg border border-neutral-100 dark:border-neutral-900/80">
+                        <div className="text-[8px] text-neutral-500 font-mono">GOOGLE INDEX GA4</div>
+                        <div className="text-xs font-bold text-[#D6B16B] font-mono">100% INGESTED</div>
+                      </div>
+                    </div>
+                  </div>
+
                   {/* Dual Grid: Strengths vs Opportunities */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8 py-8 sm:py-10 border-b border-neutral-200 dark:border-neutral-900" id="strengths-opportunities-double-grid">
                     

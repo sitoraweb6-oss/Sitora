@@ -425,7 +425,7 @@ export const GrowthJourneyEngine: React.FC<GrowthJourneyEngineProps> = ({
                     >
                       {/* Highlight active badge */}
                       {isActive && (
-                        <div className="absolute top-3 right-3 bg-[#D6B16B]/15 text-[#D6B16B] text-[8px] font-mono uppercase tracking-widest px-2 py-0.5 rounded-full font-bold animate-pulse">
+                        <div className="absolute top-3 right-3 bg-[#D6B16B]/15 text-[#D6B16B] text-[8px] font-mono uppercase tracking-widest px-2 py-0.5 rounded-full font-bold">
                           Active Target
                         </div>
                       )}

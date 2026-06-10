@@ -79,12 +79,18 @@ export const Header: React.FC<HeaderProps> = ({
 
   return (
     <header
-      className={`fixed top-0 inset-x-0 z-40 transition-all duration-500 border-b ${
+      className={`fixed z-40 transition-all duration-500 ${
+        scrolled
+          ? 'top-4 inset-x-4 max-w-7xl mx-auto rounded-2xl border'
+          : 'top-0 inset-x-0 border-b'
+      } ${
         scrolled
           ? darkMode
-            ? 'bg-[#05070A]/85 border-[rgba(255,255,255,0.08)] shadow-2xl backdrop-blur-2xl py-3'
-            : 'bg-[#FAFBFC]/85 border-[rgba(0,0,0,0.06)] shadow-md backdrop-blur-2xl py-3'
-          : 'bg-transparent border-transparent py-5'
+            ? 'bg-[#05070A]/75 border-[rgba(255,255,255,0.08)] shadow-[0_8px_32px_rgba(0,0,0,0.4)] backdrop-blur-xl py-2 px-2 sm:px-4'
+            : 'bg-[#FAFBFC]/80 border-[rgba(0,0,0,0.06)] shadow-lg backdrop-blur-xl py-2 px-2 sm:px-4'
+          : darkMode
+            ? 'bg-transparent border-transparent py-4'
+            : 'bg-transparent border-transparent py-4'
       }`}
       id="sitora-navbar"
     >
@@ -97,25 +103,43 @@ export const Header: React.FC<HeaderProps> = ({
           </a>
 
           {/* Core Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-1 bg-[#101722]/40 dark:bg-white/[0.02] p-1.5 rounded-full border border-[rgba(255,255,255,0.06)] dark:border-white/[0.02]" id="navbar-desktop-nav">
+          <nav className="hidden md:flex items-center gap-1.5 bg-[#101722]/55 dark:bg-white/[0.03] p-1.5 rounded-full border border-[rgba(255,255,255,0.06)] dark:border-black/[0.04]" id="navbar-desktop-nav">
             {navItems.map((item) => {
               const isActive = activeSection === item.id;
               return (
                 <button
                   key={item.id}
                   onClick={() => handleNavClick(item)}
-                  className={`relative px-4 py-1.5 rounded-full text-xs transition-all duration-300 font-sans font-medium cursor-pointer ${
+                  className={`relative px-4 py-1.5 rounded-full text-[11px] uppercase tracking-wider transition-all duration-300 font-sans font-medium cursor-pointer ${
                     isActive
                       ? darkMode
-                        ? 'text-[#D6B16B] bg-[#101722]/80 border border-[#D6B16B]/30'
-                        : 'text-[#B88A44] bg-[#F3F5F7] border border-[#B88A44]/30 font-bold'
+                        ? 'text-[#D6B16B] font-bold'
+                        : 'text-[#B88A44] font-bold'
                       : darkMode
-                      ? 'text-[#A7B0BD] hover:text-[#F7F8FA]'
-                      : 'text-[#4B5563] hover:text-[#111827]'
+                      ? 'text-neutral-400 hover:text-white'
+                      : 'text-neutral-600 hover:text-black'
                   }`}
                   id={`nav-item-${item.id}`}
                 >
-                  {t(item.label)}
+                  <span className="relative z-10">{t(item.label)}</span>
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeNavTab"
+                      className={`absolute inset-0 rounded-full -z-0 border ${
+                        darkMode
+                          ? 'bg-neutral-900/85 border-[#D6B16B]/25 shadow-[inset_0_1px_1px_rgba(214,177,107,0.15)]'
+                          : 'bg-white border-neutral-200 shadow-[0_2px_8px_rgba(0,0,0,0.04)]'
+                      }`}
+                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                  {isActive && (
+                    <motion.span
+                      layoutId="activeNavLine"
+                      className="absolute bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-[2px] bg-[#D6B16B] rounded-full z-10"
+                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                    />
+                  )}
                 </button>
               );
             })}
@@ -142,7 +166,7 @@ export const Header: React.FC<HeaderProps> = ({
             <div className="relative" id="desktop-language-selector">
               <button
                 onClick={() => setDropdownOpen(!dropdownOpen)}
-                className={`flex items-center gap-1.5 h-11 px-4 rounded-full border text-xs cursor-pointer font-sans font-medium transition-all duration-300 ${
+                className={`flex items-center justify-between h-11 w-[94px] px-3.5 rounded-full border text-xs cursor-pointer font-sans font-medium transition-all duration-300 ${
                   darkMode
                     ? 'border-[rgba(255,255,255,0.08)] bg-[#0B1016] text-[#D6B16B] hover:border-[#D6B16B]/50'
                     : 'border-[rgba(0,0,0,0.06)] bg-[#FFFFFF] text-[#B88A44] hover:border-[#B88A44]/50'
@@ -263,14 +287,14 @@ export const Header: React.FC<HeaderProps> = ({
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.35, ease: 'easeInOut' }}
-            className={`fixed inset-x-0 top-[60px] bottom-0 z-30 flex flex-col justify-between p-6 border-t backdrop-blur-3xl ${
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.98 }}
+            transition={{ duration: 0.25, ease: 'easeOut' }}
+            className={`fixed inset-0 z-30 flex flex-col justify-between p-6 pt-28 backdrop-blur-3xl ${
               darkMode 
-                ? 'bg-[#05070A]/95 border-[rgba(255,255,255,0.08)] text-[#F7F8FA]' 
-                : 'bg-[#FAFBFC]/95 border-[rgba(0,0,0,0.06)] text-[#111827]'
+                ? 'bg-[#05070A]/95 text-[#F7F8FA]' 
+                : 'bg-[#FAFBFC]/95 text-[#111827]'
             }`}
             id="mobile-nav-panel"
           >

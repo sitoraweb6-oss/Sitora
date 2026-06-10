@@ -345,17 +345,24 @@ export const IndustrySolutionsExplorer: React.FC<IndustrySolutionsExplorerProps>
                   <button
                     key={ind.id}
                     onClick={() => setSelectedId(ind.id)}
-                    className={`w-[260px] lg:w-full shrink-0 snap-start text-left p-4 rounded-xl border transition-all duration-300 cursor-pointer outline-none ${
+                    className={`w-[260px] lg:w-full shrink-0 snap-start text-left p-4 rounded-xl border relative overflow-hidden transition-all duration-300 cursor-pointer outline-none ${
                       isActive 
-                        ? 'border-[#D6B16B] bg-[#D6B16B]/5 shadow-[0_0_15px_rgba(214,177,107,0.1)]' 
+                        ? 'border-[#D6B16B] bg-[#D6B16B]/5 shadow-[0_0_15px_rgba(214,177,107,0.15)]' 
                         : darkMode 
-                        ? 'border-neutral-900 bg-neutral-950/40 hover:border-neutral-800'
+                        ? 'border-neutral-900 bg-neutral-950/40 hover:border-neutral-800 hover:bg-[#101722]/45'
                         : 'border-neutral-200 bg-white hover:border-neutral-300 shadow-sm'
                     }`}
                     role="tab"
                     aria-selected={isActive}
                     id={`industry-tab-${ind.id}`}
                   >
+                    {isActive && (
+                      <motion.div 
+                        layoutId="active-industry-indicator"
+                        className="absolute left-0 top-0 bottom-0 w-[3px] bg-[#D6B16B]"
+                        transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                      />
+                    )}
                     <div className="flex items-start gap-3.5">
                       <div className={`p-2 rounded-lg shrink-0 mt-0.5 transition-colors ${
                         isActive 

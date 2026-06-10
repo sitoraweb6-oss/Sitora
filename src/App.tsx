@@ -573,11 +573,23 @@ export default function App() {
       >
         {/* Immersive UI Radial Glow Effects */}
             {darkMode && (
-              <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden" id="immersive-glow-backdrops">
-                <div className="absolute top-[-10%] left-[-10%] w-[65%] h-[65%] bg-[#D6B16B] opacity-[0.22] blur-[150px] rounded-full animate-glow-gold" />
-                <div className="absolute bottom-[10%] right-[-5%] w-[45%] h-[45%] bg-[#7ED4FF] opacity-[0.14] blur-[130px] rounded-full animate-glow-blue" />
-                <div className="absolute top-[40%] right-[-10%] w-[40%] h-[50%] bg-[#D6B16B] opacity-[0.12] blur-[160px] rounded-full" />
-                <div className="absolute bottom-[35%] left-[-5%] w-[50%] h-[45%] bg-[#7ED4FF] opacity-[0.10] blur-[140px] rounded-full" />
+              <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden opacity-90" id="immersive-glow-backdrops">
+                {/* Elite Luxury Engineering Layered Gradients */}
+                {/* Deep Navy Atmospheric base glow */}
+                <div 
+                  className="absolute top-[10%] left-[15%] w-[80%] h-[65%] blur-[180px] rounded-full" 
+                  style={{ background: 'radial-gradient(circle, rgba(11,28,61,0.3) 0%, rgba(5,7,10,0) 80%)' }}
+                />
+                <div 
+                  className="absolute bottom-[15%] right-[5%] w-[70%] h-[65%] blur-[170px] rounded-full" 
+                  style={{ background: 'radial-gradient(circle, rgba(15,33,70,0.25) 0%, rgba(5,7,10,0) 75%)' }}
+                />
+                
+                {/* Soft Gold Luxury ambient warmth around key structures */}
+                <div className="absolute top-[-5%] left-[-10%] w-[55%] h-[55%] bg-[#D6B16B] opacity-[0.15] blur-[160px] rounded-full animate-glow-gold" />
+                <div className="absolute bottom-[5%] right-[-5%] w-[40%] h-[50%] bg-[#D6B16B] opacity-[0.10] blur-[150px] rounded-full animate-glow-blue" />
+                <div className="absolute top-[45%] right-[-10%] w-[45%] h-[45%] bg-[#D6B16B] opacity-[0.08] blur-[170px] rounded-full" />
+                <div className="absolute bottom-[45%] left-[-10%] w-[45%] h-[45%] bg-[#0A1A35] opacity-[0.25] blur-[150px] rounded-full" />
               </div>
             )}
             
@@ -622,7 +634,7 @@ export default function App() {
                     />
                     
                     {/* Sitora Web Industry Solutions Explorer */}
-                    <Suspense fallback={<div className="min-h-[150px] w-full" />}>
+                    <Suspense fallback={<div className="min-h-[580px] w-full border border-dashed border-neutral-900/10 dark:border-neutral-800/10 rounded-3xl" />}>
                       <IndustrySolutionsExplorer 
                         darkMode={darkMode}
                         onOpenInquiry={handleOpenInquiry}
@@ -637,13 +649,13 @@ export default function App() {
                     
                     {/* Interactive Proposal Planner section copy on the homepage */}
                     <section className="py-20 sm:py-24 relative px-4 sm:px-6 lg:px-8 border-t border-neutral-900/10 dark:border-neutral-900/50" id="home-proposal-planner-section">
-                      <Suspense fallback={<div className="min-h-[150px] w-full" />}>
+                      <Suspense fallback={<div className="min-h-[500px] w-full border border-dashed border-neutral-900/10 dark:border-neutral-800/10 rounded-3xl" />}>
                         <ProposalPlanner darkMode={darkMode} />
                       </Suspense>
                     </section>
                     
                     {/* Sitora Web tailored Website Blueprint Generator */}
-                    <Suspense fallback={<div className="min-h-[150px] w-full" />}>
+                    <Suspense fallback={<div className="min-h-[620px] w-full border border-dashed border-neutral-900/10 dark:border-neutral-800/10 rounded-3xl" />}>
                       <WebsiteBlueprintGenerator 
                         darkMode={darkMode}
                         onOpenInquiry={handleOpenInquiry}
@@ -658,7 +670,7 @@ export default function App() {
                     />
                     
                     {/* Sitora Web interactive Before After Transformation Showcase */}
-                    <Suspense fallback={<div className="min-h-[150px] w-full" />}>
+                    <Suspense fallback={<div className="min-h-[700px] sm:min-h-[760px] w-full border border-dashed border-neutral-900/10 dark:border-neutral-800/10 rounded-3xl" />}>
                       <TransformationShowcase 
                         darkMode={darkMode}
                         onOpenInquiry={handleOpenInquiry}
@@ -667,7 +679,7 @@ export default function App() {
                     </Suspense>
                     
                     {/* Sitora Web interactive Digital Growth Audit Engine */}
-                    <Suspense fallback={<div className="min-h-[150px] w-full" />}>
+                    <Suspense fallback={<div className="min-h-[720px] sm:min-h-[820px] w-full border border-dashed border-neutral-900/10 dark:border-neutral-800/10 rounded-3xl" />}>
                       <DigitalGrowthAudit 
                         darkMode={darkMode}
                         onOpenInquiry={handleOpenInquiry}
@@ -675,7 +687,7 @@ export default function App() {
                     </Suspense>
                     
                     {/* Sitora Web tailored luxury Growth Journey Engine */}
-                    <Suspense fallback={<div className="min-h-[150px] w-full" />}>
+                    <Suspense fallback={<div className="min-h-[600px] sm:min-h-[680px] w-full border border-dashed border-neutral-900/10 dark:border-neutral-800/10 rounded-3xl" />}>
                       <GrowthJourneyEngine 
                         darkMode={darkMode}
                         onOpenInquiry={handleOpenInquiry}
@@ -683,7 +695,7 @@ export default function App() {
                     </Suspense>
                     
                     {/* Client stories trust testimonials */}
-                    <Suspense fallback={<div className="min-h-[150px] w-full" />}>
+                    <Suspense fallback={<div className="min-h-[440px] w-full border border-dashed border-neutral-900/10 dark:border-neutral-800/10 rounded-3xl" />}>
                       <TestimonialsSection 
                         darkMode={darkMode} 
                       />
@@ -696,7 +708,7 @@ export default function App() {
                     />
                     
                     {/* FAQ Accordions block */}
-                    <Suspense fallback={<div className="min-h-[150px] w-full" />}>
+                    <Suspense fallback={<div className="min-h-[480px] w-full border border-dashed border-neutral-900/10 dark:border-neutral-800/10 rounded-3xl" />}>
                       <FAQSection 
                         darkMode={darkMode} 
                       />

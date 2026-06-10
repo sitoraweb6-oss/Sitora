@@ -59,7 +59,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onOpenInquiry, d
                 {/* Accent highlights */}
                 {isRecommended && (
                   <div className="absolute top-4 right-4 flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-600 text-white text-[9px] font-bold uppercase tracking-widest leading-none shadow-lg" id="recommended-badge">
-                    <Flame size={10} className="fill-current animate-pulse" />
+                    <Flame size={10} className="fill-current" />
                     <span>POPULAR CHANNELS</span>
                   </div>
                 )}
