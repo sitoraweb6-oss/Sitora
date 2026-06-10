@@ -329,7 +329,7 @@ Inquiry submitted via *Sitora Web* platform.`;
                     required
                     value={formData.name}
                     onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-                    className="w-full bg-[#05070A]/85 border border-[rgba(255,255,255,0.08)] focus:border-[#D6B16B] focus:outline-none rounded-xl px-4 py-3 text-sm transition-all text-[#F7F8FA]"
+                    className="w-full bg-[#05070A]/85 border border-[rgba(255,255,255,0.08)] focus:border-blue-500 focus:ring-1 focus:ring-blue-500/20 focus:outline-none rounded-xl px-4 py-3 text-sm transition-all text-[#F7F8FA]"
                     placeholder="e.g., Ahsan Habib"
                   />
                 </div>
@@ -344,7 +344,7 @@ Inquiry submitted via *Sitora Web* platform.`;
                     type="text"
                     value={formData.businessName}
                     onChange={(e) => setFormData(prev => ({ ...prev, businessName: e.target.value }))}
-                    className="w-full bg-[#05070A]/85 border border-[rgba(255,255,255,0.08)] focus:border-[#D6B16B] focus:outline-none rounded-xl px-4 py-3 text-sm transition-all text-[#F7F8FA]"
+                    className="w-full bg-[#05070A]/85 border border-[rgba(255,255,255,0.08)] focus:border-blue-500 focus:ring-1 focus:ring-blue-500/20 focus:outline-none rounded-xl px-4 py-3 text-sm transition-all text-[#F7F8FA]"
                     placeholder="e.g., Zenith Clothing Bangladesh"
                   />
                 </div>
@@ -360,7 +360,7 @@ Inquiry submitted via *Sitora Web* platform.`;
                     required
                     value={formData.email}
                     onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
-                    className="w-full bg-[#05070A]/85 border border-[rgba(255,255,255,0.08)] focus:border-[#D6B16B] focus:outline-none rounded-xl px-4 py-3 text-sm transition-all text-[#F7F8FA]"
+                    className="w-full bg-[#05070A]/85 border border-[rgba(255,255,255,0.08)] focus:border-blue-500 focus:ring-1 focus:ring-blue-500/20 focus:outline-none rounded-xl px-4 py-3 text-sm transition-all text-[#F7F8FA]"
                     placeholder="e.g., habib@zenith.com"
                   />
                 </div>
@@ -376,7 +376,7 @@ Inquiry submitted via *Sitora Web* platform.`;
                     required
                     value={formData.phone}
                     onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
-                    className="w-full bg-[#05070A]/85 border border-[rgba(255,255,255,0.08)] focus:border-[#D6B16B] focus:outline-none rounded-xl px-4 py-3 text-sm transition-all text-[#F7F8FA]"
+                    className="w-full bg-[#05070A]/85 border border-[rgba(255,255,255,0.08)] focus:border-blue-500 focus:ring-1 focus:ring-blue-500/20 focus:outline-none rounded-xl px-4 py-3 text-sm transition-all text-[#F7F8FA]"
                     placeholder="e.g., +880 1712-XXXXXX"
                   />
                 </div>
@@ -394,7 +394,7 @@ Inquiry submitted via *Sitora Web* platform.`;
                         onClick={() => setFormData(prev => ({ ...prev, projectType: type.value }))}
                         className={`px-3 py-2 text-xs rounded-lg border text-left transition-all cursor-pointer ${
                           formData.projectType === type.value
-                            ? 'bg-[#D6B16B]/10 border-[#D6B16B] text-white'
+                            ? 'bg-blue-600/10 border-blue-500 text-white'
                             : 'bg-neutral-950 border-neutral-900 text-neutral-400 hover:border-neutral-800'
                         }`}
                         id={`inquiry-type-option-${type.value}`}
@@ -418,7 +418,7 @@ Inquiry submitted via *Sitora Web* platform.`;
                         onClick={() => setFormData(prev => ({ ...prev, budget: b }))}
                         className={`py-2 text-xs rounded-lg border text-center transition-all cursor-pointer ${
                           formData.budget === b
-                            ? 'bg-[#D6B16B] border-[#D6B16B] text-neutral-900 font-medium'
+                            ? 'bg-blue-600 border-blue-500 text-white font-medium'
                             : 'bg-neutral-950 border-neutral-900 text-neutral-400 hover:border-neutral-800'
                         }`}
                         id={`inquiry-bdt-option-${b.replace(/\s+/g, '-')}`}
@@ -439,7 +439,7 @@ Inquiry submitted via *Sitora Web* platform.`;
                     rows={3}
                     value={formData.brief}
                     onChange={(e) => setFormData(prev => ({ ...prev, brief: e.target.value }))}
-                    className="w-full bg-[#05070A]/85 border border-[rgba(255,255,255,0.08)] focus:border-[#D6B16B] focus:outline-none rounded-xl px-4 py-3 text-sm transition-all text-[#F7F8FA] resize-none"
+                    className="w-full bg-[#05070A]/85 border border-[rgba(255,255,255,0.08)] focus:border-blue-500 focus:ring-1 focus:ring-blue-500/20 focus:outline-none rounded-xl px-4 py-3 text-sm transition-all text-[#F7F8FA] resize-none"
                     placeholder="Briefly describe what goals you wish to achieve with Sitora Web..."
                   />
                 </div>
@@ -448,7 +448,7 @@ Inquiry submitted via *Sitora Web* platform.`;
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full flex items-center justify-center gap-2 mt-6 py-3.5 px-6 rounded-xl bg-[#D6B16B] text-neutral-950 hover:bg-[#bf9b59] hover:shadow-[0_0_25px_rgba(214,177,107,0.35)] transition-all font-sans text-xs font-bold uppercase tracking-wider disabled:opacity-50 cursor-pointer shadow-lg shadow-[#D6B16B]/10"
+                  className="w-full flex items-center justify-center gap-2 mt-6 py-3.5 px-6 rounded-xl bg-blue-600 text-white hover:bg-blue-500 hover:shadow-[0_0_25px_rgba(59,130,246,0.3)] transition-all font-sans text-xs font-bold uppercase tracking-wider disabled:opacity-50 cursor-pointer shadow-lg shadow-blue-500/10"
                   id="submit-inquiry-button"
                 >
                   {isSubmitting ? (
@@ -465,7 +465,7 @@ Inquiry submitted via *Sitora Web* platform.`;
                 </button>
 
                 <div className="mt-4 p-3 rounded-xl bg-neutral-950/60 border border-neutral-900/60 text-center space-y-1" id="inquiry-hotline-banner">
-                  <p className="text-[10px] font-mono font-bold text-[#D6B16B] uppercase tracking-wider">
+                  <p className="text-[10px] font-mono font-bold text-blue-500 uppercase tracking-wider">
                     WhatsApp Business Hotline & Support
                   </p>
                   <p className="text-[11px] font-bold text-white">

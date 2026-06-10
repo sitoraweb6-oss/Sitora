@@ -20,7 +20,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onOpenInquiry, d
         
         {/* Header Column */}
         <div className="text-center mb-16 sm:mb-24 flex flex-col items-center" id="pricing-header">
-          <span className="text-[10px] font-mono text-[#D6B16B] uppercase tracking-[0.25em] block mb-3">
+          <span className="text-[10px] font-mono text-blue-500 uppercase tracking-[0.25em] block mb-3">
             Financial Transparency
           </span>
           <h2 className={`font-sans text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-tight max-w-2xl ${
@@ -48,17 +48,17 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onOpenInquiry, d
                 className={`relative rounded-2xl p-6 sm:p-7 flex flex-col justify-between border transition-all duration-500 overflow-hidden lg:col-span-1 min-h-[460px] cursor-pointer hover:scale-[1.015] ${
                   isRecommended 
                     ? darkMode
-                      ? 'border-[#D6B16B] bg-[#D6B16B]/[0.05] ring-1 ring-[#D6B16B]/30 shadow-2xl lg:scale-[1.03] lg:-translate-y-2'
-                      : 'border-[#B88A44] bg-[#B88A44]/5 shadow-2xl lg:scale-[1.03] lg:-translate-y-2'
+                      ? 'border-blue-500 bg-blue-500/[0.04] ring-1 ring-blue-500/20 shadow-[0_0_50px_rgba(59,130,246,0.15)] lg:scale-[1.03] lg:-translate-y-2'
+                      : 'border-blue-600 bg-blue-600/5 shadow-[0_0_50px_rgba(59,130,246,0.12)] lg:scale-[1.03] lg:-translate-y-2'
                     : darkMode
-                    ? 'border-[rgba(255,255,255,0.08)] bg-[#0B1016]/45 hover:border-[#D6B16B]/35'
-                    : 'border-[rgba(0,0,0,0.06)] bg-white hover:border-[#B88A44]'
+                    ? 'border-[rgba(255,255,255,0.08)] bg-[#0B1016]/45 hover:border-blue-500/30'
+                    : 'border-[rgba(0,0,0,0.06)] bg-white hover:border-blue-600'
                 }`}
                 id={`pricing-card-${plan.id}`}
               >
                 {/* Accent highlights */}
                 {isRecommended && (
-                  <div className="absolute top-4 right-4 flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#D6B16B] text-neutral-950 text-[9px] font-bold uppercase tracking-widest leading-none shadow-lg" id="recommended-badge">
+                  <div className="absolute top-4 right-4 flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-600 text-white text-[9px] font-bold uppercase tracking-widest leading-none shadow-lg" id="recommended-badge">
                     <Flame size={10} className="fill-current animate-pulse" />
                     <span>POPULAR CHANNELS</span>
                   </div>
@@ -110,7 +110,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onOpenInquiry, d
                           size={11} 
                           className={`mt-0.5 shrink-0 ${
                             feat.included 
-                              ? 'text-[#D6B16B]' 
+                              ? 'text-blue-500' 
                               : 'text-neutral-700 dark:text-neutral-800'
                           }`} 
                         />
@@ -128,14 +128,14 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onOpenInquiry, d
 
                 {/* Footer and CTA Actions */}
                 <div className="mt-8 pt-4 border-t border-neutral-900/10 dark:border-neutral-900" id={`pricing-bottom-${plan.id}`}>
-                  <button
+                   <button
                     onClick={() => onOpenInquiry(plan.name)}
                     className={`w-full flex items-center justify-center gap-1.5 py-3.5 px-4 rounded-xl text-[10px] font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer ${
                       isRecommended
-                        ? 'bg-[#D6B16B] text-neutral-950 font-bold hover:bg-[#D6B16B]/85 shadow-[0_0_20px_rgba(214,177,107,0.25)]'
+                        ? 'bg-blue-600 text-white font-bold hover:bg-blue-500 shadow-[0_0_25px_rgba(59,130,246,0.25)] hover:scale-[1.02]'
                         : darkMode
                         ? 'bg-neutral-950 border border-neutral-800 text-neutral-200 hover:border-neutral-700 hover:bg-neutral-900'
-                        : 'bg-[#D6B16B] text-neutral-950 hover:bg-[#D6B16B]/85'
+                        : 'bg-blue-600 text-white hover:bg-blue-500 shadow-[0_0_15px_rgba(59,130,246,0.1)]'
                     }`}
                     id={`plan-cta-button-${plan.id}`}
                   >

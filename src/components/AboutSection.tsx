@@ -21,7 +21,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ darkMode }) => {
             <span className="text-[10px] font-mono text-[#D6B16B] uppercase tracking-[0.25em] block">
               Core Genesis
             </span>
-            <h2 className={`font-sans text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-tight ${
+            <h2 className={`font-sans text-2xl sm:text-4xl md:text-5xl font-black tracking-tight leading-[1.2] sm:leading-tight ${
               darkMode ? 'text-[#F7F8FA]' : 'text-[#111827]'
             }`} id="about-story-headline">
               We build digital systems that bridge the gap between premium design & real business growth.

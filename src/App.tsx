@@ -24,6 +24,7 @@ import { Footer } from './components/Footer';
 import { InquiryForm, FloatingWhatsApp } from './components/InquiryForm';
 import { BlogPage } from './components/BlogPage';
 import { PortfolioPage } from './components/PortfolioPage';
+import { ProposalPlanner } from './components/ProposalPlanner';
 
 // SEO URL Slug Mappers
 const SLUG_TO_ID_MAP: Record<string, string> = {
@@ -515,13 +516,6 @@ export default function App() {
                       onOpenInquiry={handleOpenInquiry} 
                     />
                     
-                    {/* Crafted Experiences editorial list */}
-                    <CraftedExperiencesSection 
-                      darkMode={darkMode}
-                      onOpenInquiry={handleOpenInquiry} 
-                      onExplorePortfolio={() => handleNavigate('portfolio')}
-                    />
-                    
                     {/* Why Choose Sitora Web / About pillars */}
                     <AboutSection 
                       darkMode={darkMode} 
@@ -531,6 +525,18 @@ export default function App() {
                     <PricingSection 
                       darkMode={darkMode}
                       onOpenInquiry={handleOpenInquiry} 
+                    />
+                    
+                    {/* Interactive Proposal Planner section copy on the homepage */}
+                    <section className="py-20 sm:py-24 relative px-4 sm:px-6 lg:px-8 border-t border-neutral-900/10 dark:border-neutral-900/50" id="home-proposal-planner-section">
+                      <ProposalPlanner darkMode={darkMode} />
+                    </section>
+                    
+                    {/* Crafted Experiences editorial list */}
+                    <CraftedExperiencesSection 
+                      darkMode={darkMode}
+                      onOpenInquiry={handleOpenInquiry} 
+                      onExplorePortfolio={() => handleNavigate('portfolio')}
                     />
                     
                     {/* Client stories trust testimonials */}
