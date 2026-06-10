@@ -158,11 +158,11 @@ export const Footer: React.FC<FooterProps> = ({ onOpenInquiry, darkMode, onNavig
 
             {/* Column 2: Services directories */}
             <div className="md:col-span-2.5 space-y-4" id="footer-col-services">
-              <h4 className={`text-[10px] uppercase tracking-widest font-mono font-bold ${
+              <h3 className={`text-[10px] uppercase tracking-widest font-mono font-bold ${
                 darkMode ? 'text-[#F7F8FA]' : 'text-[#111827]'
               }`}>
                 Competency Guilds
-              </h4>
+              </h3>
               <ul className="space-y-2.5 text-[11px]" id="footer-list-services">
                 {quickLinksColumn1.map((link, idx) => (
                   <li key={idx}>
@@ -180,11 +180,11 @@ export const Footer: React.FC<FooterProps> = ({ onOpenInquiry, darkMode, onNavig
 
             {/* Column 3: Corporate structures */}
             <div className="md:col-span-2.5 space-y-4" id="footer-col-corp">
-              <h4 className={`text-[10px] uppercase tracking-widest font-mono font-bold ${
+              <h3 className={`text-[10px] uppercase tracking-widest font-mono font-bold ${
                 darkMode ? 'text-[#F7F8FA]' : 'text-[#111827]'
               }`}>
                 Institutional Index
-              </h4>
+              </h3>
               <ul className="space-y-2.5 text-[11px]" id="footer-list-corp">
                 {quickLinksColumn2.map((link, idx) => (
                   <li key={idx}>
@@ -202,11 +202,11 @@ export const Footer: React.FC<FooterProps> = ({ onOpenInquiry, darkMode, onNavig
 
             {/* Column 4: Social linkages channels */}
             <div className="md:col-span-3 space-y-4" id="footer-col-socials">
-              <h4 className={`text-[10px] uppercase tracking-widest font-mono font-bold ${
+              <h3 className={`text-[10px] uppercase tracking-widest font-mono font-bold ${
                 darkMode ? 'text-[#F7F8FA]' : 'text-[#111827]'
               }`}>
                 Global Social Nodes
-              </h4>
+              </h3>
               <div className="grid grid-cols-2 gap-2" id="footer-socials-grid">
                 {socialLinks.map((social) => (
                   <a

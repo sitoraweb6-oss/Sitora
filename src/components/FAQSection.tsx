@@ -59,6 +59,8 @@ export const FAQSection: React.FC<FAQSectionProps> = ({ darkMode }) => {
                 {/* Accordion Trigger */}
                 <button
                   onClick={() => toggleAccordion(faq.id)}
+                  aria-expanded={isOpen}
+                  aria-controls={`faq-expandable-${faq.id}`}
                   className="w-full flex items-center justify-between p-5 sm:p-6 text-left cursor-pointer focus:outline-none"
                   id={`faq-trigger-${faq.id}`}
                 >
@@ -92,6 +94,8 @@ export const FAQSection: React.FC<FAQSectionProps> = ({ darkMode }) => {
                       transition={{ duration: 0.3, ease: 'easeInOut' }}
                       className="overflow-hidden"
                       id={`faq-expandable-${faq.id}`}
+                      role="region"
+                      aria-labelledby={`faq-trigger-${faq.id}`}
                     >
                       <div className="px-5 pb-5 sm:px-6 sm:pb-6 pt-0 border-t border-neutral-900/5 dark:border-neutral-950" id={`faq-answer-block-${faq.id}`}>
                         <p className={`font-sans text-[11px] sm:text-xs leading-relaxed ${

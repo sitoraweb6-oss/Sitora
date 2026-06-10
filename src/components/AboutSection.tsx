@@ -46,11 +46,11 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ darkMode }) => {
               darkMode ? 'bg-[#0B1016]/50 border-[rgba(255,255,255,0.08)] shadow-xl' : 'bg-white border-[rgba(0,0,0,0.06)]'
             }`} id="pillar-card-01">
               <Sparkles className="text-[#D6B16B] mb-4" size={20} />
-              <h4 className={`font-sans text-sm font-bold tracking-tight mb-2 ${
+              <h3 className={`font-sans text-sm font-bold tracking-tight mb-2 ${
                 darkMode ? 'text-[#F7F8FA]' : 'text-[#111827]'
               }`}>
                 Aesthetic Nobility
-              </h4>
+              </h3>
               <p className="text-[11px] text-neutral-400 leading-relaxed font-sans">
                 Borrowing composition parameters from Framer, Apple, and Awwwards to deliver experiences that command authority instantly.
               </p>
@@ -61,11 +61,11 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ darkMode }) => {
               darkMode ? 'bg-[#0B1016]/50 border-[rgba(255,255,255,0.08)]' : 'bg-white border-[rgba(0,0,0,0.06)]'
             }`} id="pillar-card-02">
               <Milestone className="text-emerald-500 mb-4" size={20} />
-              <h4 className={`font-sans text-sm font-bold tracking-tight mb-2 ${
+              <h3 className={`font-sans text-sm font-bold tracking-tight mb-2 ${
                 darkMode ? 'text-[#F7F8FA]' : 'text-[#111827]'
               }`}>
                 Performant Integrity
-              </h4>
+              </h3>
               <p className="text-[11px] text-neutral-400 leading-relaxed font-sans">
                 Every line of code is compiled to load instantly, preventing high traffic decay and converting ad spend with maximum effectiveness.
               </p>
@@ -76,11 +76,11 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ darkMode }) => {
               darkMode ? 'bg-[#0B1016]/50 border-[rgba(255,255,255,0.08)]' : 'bg-white border-[rgba(0,0,0,0.06)]'
             }`} id="pillar-card-03">
               <ShieldCheck className="text-[#7ED4FF] mb-4" size={20} />
-              <h4 className={`font-sans text-sm font-bold tracking-tight mb-2 ${
+              <h3 className={`font-sans text-sm font-bold tracking-tight mb-2 ${
                 darkMode ? 'text-[#F7F8FA]' : 'text-[#111827]'
               }`}>
                 Accurate Attributions
-              </h4>
+              </h3>
               <p className="text-[11px] text-neutral-400 leading-relaxed font-sans">
                 Bypassing iOS privacy restrictions using modern Meta Conversions API (CAPI) servers, guaranteeing perfect marketing metrics.
               </p>
@@ -91,11 +91,11 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ darkMode }) => {
               darkMode ? 'bg-[#0B1016]/50 border-[rgba(255,255,255,0.08)]' : 'bg-white border-[rgba(0,0,0,0.06)]'
             }`} id="pillar-card-04">
               <HelpingHand className="text-violet-400 mb-4" size={20} />
-              <h4 className={`font-sans text-sm font-bold tracking-tight mb-2 ${
+              <h3 className={`font-sans text-sm font-bold tracking-tight mb-2 ${
                 darkMode ? 'text-[#F7F8FA]' : 'text-[#111827]'
               }`}>
                 Long-Term Loyalty
-              </h4>
+              </h3>
               <p className="text-[11px] text-neutral-400 leading-relaxed font-sans">
                 We do not abandon our clients after launch. We nurture campaigns, run monthly updates, and consult with transparency regularly.
               </p>
