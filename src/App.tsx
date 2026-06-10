@@ -244,16 +244,22 @@ export default function App() {
       element.setAttribute('content', content);
     };
 
+    // Resolve absolute domain origin for crawlers who strictly require absolute URLs
+    const currentOrigin = typeof window !== 'undefined' ? window.location.origin : 'https://sitora.org';
+    const resolvedOgImage = currentOrigin.includes('localhost') || currentOrigin.includes('127.0.0.1')
+      ? 'https://sitora.org/og-image.jpg'
+      : `${currentOrigin}/og-image.jpg`;
+
     setOgPlayload('og:title', seoTitle);
     setOgPlayload('og:description', seoDesc);
     setOgPlayload('og:url', canonicalUrl);
     setOgPlayload('og:type', isArticle ? 'article' : 'website');
-    setOgPlayload('og:image', 'https://sitoraweb.com/assets/og-image.webp');
+    setOgPlayload('og:image', resolvedOgImage);
     setOgPlayload('og:site_name', 'Sitora Web');
     setOgPlayload('twitter:card', 'summary_large_image', false);
     setOgPlayload('twitter:title', seoTitle, false);
     setOgPlayload('twitter:description', seoDesc, false);
-    setOgPlayload('twitter:image', 'https://sitoraweb.com/assets/og-image.webp', false);
+    setOgPlayload('twitter:image', resolvedOgImage, false);
 
     // Inject Search-Engine Schemas
     document.querySelectorAll('script[data-schema-engine]').forEach(el => el.remove());
@@ -273,7 +279,7 @@ export default function App() {
       "@id": "https://sitoraweb.com/#organization",
       "name": "Sitora Web",
       "url": "https://sitoraweb.com",
-      "logo": "https://sitoraweb.com/assets/logo.png",
+      "logo": `${currentOrigin}/favicon.svg`,
       "sameAs": [
         "https://www.facebook.com/sitoraweb",
         "https://www.instagram.com/sitoraweb",
@@ -291,7 +297,7 @@ export default function App() {
       "@type": "DigitalMarketingAgency",
       "@id": "https://sitoraweb.com/#localbusiness",
       "name": "Sitora Web",
-      "image": "https://sitoraweb.com/assets/og-image.webp",
+      "image": resolvedOgImage,
       "telephone": "+8801629586290",
       "email": "sitoraweb6@gmail.com",
       "address": {
