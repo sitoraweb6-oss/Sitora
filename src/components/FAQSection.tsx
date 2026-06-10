@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Plus, Minus, HelpCircle } from 'lucide-react';
 import { FAQ_DATA } from '../data';
+import { useLanguage } from '../LanguageContext';
 
 interface FAQSectionProps {
   darkMode: boolean;
@@ -9,6 +10,7 @@ interface FAQSectionProps {
 
 export const FAQSection: React.FC<FAQSectionProps> = ({ darkMode }) => {
   const [openId, setOpenId] = useState<string | null>('faq-01'); // First accordion open by default
+  const { t } = useLanguage();
 
   const toggleAccordion = (id: string) => {
     setOpenId((prev) => (prev === id ? null : id));
@@ -24,15 +26,15 @@ export const FAQSection: React.FC<FAQSectionProps> = ({ darkMode }) => {
         {/* Header Block */}
         <div className="text-center mb-16 sm:mb-20 flex flex-col items-center" id="faq-header">
           <span className="text-[10px] font-mono text-[#FF8A00] uppercase tracking-[0.25em] block mb-3">
-            Pre-Flight Clarifications
+            {t('Pre-Flight Clarifications')}
           </span>
           <h2 className={`font-sans text-3xl sm:text-4xl font-black tracking-tight ${
             darkMode ? 'text-white' : 'text-neutral-950'
           }`} id="faq-title">
-            Frequently Asked Queries
+            {t('Frequently Asked Queries')}
           </h2>
           <p className="mt-3 max-w-lg text-xs sm:text-sm text-neutral-400 font-sans leading-relaxed" id="faq-subtitle">
-            Answering functional and operational metrics so we can coordinate with absolute project transparency straight away.
+            {t('Answering functional and operational metrics so we can coordinate with absolute project transparency straight away.')}
           </p>
         </div>
 
@@ -65,7 +67,7 @@ export const FAQSection: React.FC<FAQSectionProps> = ({ darkMode }) => {
                     <span className={`font-sans text-xs sm:text-sm font-bold tracking-tight ${
                       darkMode ? 'text-white' : 'text-neutral-950'
                     }`}>
-                      {faq.question}
+                      {t(faq.question)}
                     </span>
                   </div>
 
@@ -95,7 +97,7 @@ export const FAQSection: React.FC<FAQSectionProps> = ({ darkMode }) => {
                         <p className={`font-sans text-[11px] sm:text-xs leading-relaxed ${
                           darkMode ? 'text-neutral-305' : 'text-neutral-650'
                         }`} id={`faq-text-content-${faq.id}`}>
-                          {faq.answer}
+                          {t(faq.answer)}
                         </p>
                       </div>
                     </motion.div>

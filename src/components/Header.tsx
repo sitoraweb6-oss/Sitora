@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Sun, Moon, ArrowRight } from 'lucide-react';
+import { Menu, X, Sun, Moon, ArrowRight, ChevronDown } from 'lucide-react';
 import { SitoraLogoWithText } from './SitoraLogo';
 import { motion, AnimatePresence } from 'motion/react';
+import { useLanguage } from '../LanguageContext';
 
 interface HeaderProps {
   darkMode: boolean;
@@ -21,6 +22,9 @@ export const Header: React.FC<HeaderProps> = ({
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  const { language, setLanguage, t } = useLanguage();
 
   useEffect(() => {
     if (currentView === 'blog') {
@@ -111,7 +115,7 @@ export const Header: React.FC<HeaderProps> = ({
                   }`}
                   id={`nav-item-${item.id}`}
                 >
-                  {item.label}
+                  {t(item.label)}
                 </button>
               );
             })}
@@ -122,28 +126,101 @@ export const Header: React.FC<HeaderProps> = ({
             {/* Theme Toggle */}
             <button
               onClick={onToggleTheme}
-              className={`p-2 rounded-full border cursor-pointer transition-all duration-300 ${
+              className={`w-11 h-11 flex items-center justify-center rounded-full border cursor-pointer transition-all duration-300 ${
                 darkMode
                   ? 'border-[rgba(255,255,255,0.08)] bg-[#0B1016] text-[#D6B16B] hover:border-[#D6B16B]/50 hover:text-[#E4C78A] hover:shadow-[0_0_15px_rgba(214,177,107,0.15)]'
                   : 'border-[rgba(0,0,0,0.06)] bg-[#FFFFFF] text-[#B88A44] hover:border-[#B88A44]/50 hover:text-[#D6B16B]'
               }`}
               title={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+              aria-label={darkMode ? 'Switch to Light Theme' : 'Switch to Dark Theme'}
               id="desktop-theme-toggle"
             >
               {darkMode ? <Sun size={15} /> : <Moon size={15} />}
             </button>
 
+            {/* Language dropdown switcher */}
+            <div className="relative" id="desktop-language-selector">
+              <button
+                onClick={() => setDropdownOpen(!dropdownOpen)}
+                className={`flex items-center gap-1.5 h-11 px-4 rounded-full border text-xs cursor-pointer font-sans font-medium transition-all duration-300 ${
+                  darkMode
+                    ? 'border-[rgba(255,255,255,0.08)] bg-[#0B1016] text-[#D6B16B] hover:border-[#D6B16B]/50'
+                    : 'border-[rgba(0,0,0,0.06)] bg-[#FFFFFF] text-[#B88A44] hover:border-[#B88A44]/50'
+                }`}
+                aria-label="Change Language"
+                id="lang-selector-trigger"
+              >
+                <span>🌐 {language === 'bn' ? 'বাং' : 'EN'}</span>
+                <ChevronDown size={11} className={`transition-transform duration-300 ${dropdownOpen ? 'rotate-180' : ''}`} />
+              </button>
+
+              <AnimatePresence>
+                {dropdownOpen && (
+                  <>
+                    <div 
+                      className="fixed inset-0 z-40" 
+                      onClick={() => setDropdownOpen(false)} 
+                    />
+                    <motion.div
+                      initial={{ opacity: 0, y: 5 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 5 }}
+                      transition={{ duration: 0.15 }}
+                      className={`absolute right-0 mt-2 w-32 rounded-xl border p-1 shadow-2xl backdrop-blur-2xl z-50 ${
+                        darkMode
+                          ? 'bg-[#05070A]/95 border-[rgba(255,255,255,0.12)] text-[#F7F8FA]'
+                          : 'bg-white border-[rgba(0,0,0,0.08)] text-[#111827]'
+                      }`}
+                      id="lang-dropdown-menu"
+                    >
+                      <button
+                        onClick={() => {
+                          setLanguage('en');
+                          setDropdownOpen(false);
+                        }}
+                        className={`w-full text-left px-3 py-2 rounded-lg text-xs font-sans font-semibold transition-colors flex items-center justify-between cursor-pointer min-h-11 ${
+                          language === 'en'
+                            ? 'text-[#D6B16B] bg-[#101722]/50 font-bold'
+                            : darkMode ? 'hover:bg-[#101722]/50 text-neutral-400 hover:text-white' : 'hover:bg-neutral-100 text-neutral-600 hover:text-neutral-900'
+                        }`}
+                        aria-label="Set language to English"
+                      >
+                        <span>English</span>
+                        {language === 'en' && <span className="text-[#D6B16B]">✓</span>}
+                      </button>
+                      <button
+                        onClick={() => {
+                          setLanguage('bn');
+                          setDropdownOpen(false);
+                        }}
+                        className={`w-full text-left px-3 py-2 rounded-lg text-xs font-sans font-semibold transition-colors flex items-center justify-between cursor-pointer min-h-11 ${
+                          language === 'bn'
+                            ? 'text-[#D6B16B] bg-[#101722]/50 font-bold'
+                            : darkMode ? 'hover:bg-[#101722]/50 text-neutral-400 hover:text-white' : 'hover:bg-neutral-100 text-neutral-600 hover:text-neutral-900'
+                        }`}
+                        aria-label="Set language to Bangla"
+                      >
+                        <span>বাংলা</span>
+                        {language === 'bn' && <span className="text-[#D6B16B]">✓</span>}
+                      </button>
+                    </motion.div>
+                  </>
+                )}
+              </AnimatePresence>
+            </div>
+
             {/* Quick Consultation CTA */}
             <button
               onClick={() => onOpenInquiry()}
-              className={`group flex items-center gap-1.5 py-2 px-4 rounded-full font-sans text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-md cursor-pointer ${
+              className={`group flex items-center gap-1.5 h-11 px-5 rounded-full font-sans text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-md cursor-pointer ${
                 darkMode
                   ? 'bg-[#D6B16B] text-neutral-950 hover:bg-[#E4C78A] hover:shadow-[0_0_20px_rgba(214,177,107,0.3)] shadow-[#D6B16B]/15'
                   : 'bg-[#B88A44] text-white hover:bg-[#D6B16B]'
               }`}
+              aria-label="Open Consultation Portal"
               id="desktop-get-started-cta"
             >
-              <span>Get in Touch</span>
+              <span>{t('Get in Touch')}</span>
               <ArrowRight size={13} className="transition-transform duration-300 group-hover:translate-x-1" />
             </button>
           </div>
@@ -153,25 +230,27 @@ export const Header: React.FC<HeaderProps> = ({
             {/* Small screen theme toggle */}
             <button
               onClick={onToggleTheme}
-              className={`p-2 rounded-full border cursor-pointer transition-all duration-300 ${
+              className={`w-11 h-11 flex items-center justify-center rounded-full border cursor-pointer transition-all duration-300 ${
                 darkMode
                   ? 'border-[rgba(255,255,255,0.08)] bg-[#0B1016] text-[#D6B16B]'
                   : 'border-[rgba(0,0,0,0.06)] bg-[#FFFFFF] text-[#B88A44]'
               }`}
               id="mobile-theme-toggle"
+              aria-label={darkMode ? 'Switch to Light Theme' : 'Switch to Dark Theme'}
             >
-              {darkMode ? <Sun size={14} /> : <Moon size={14} />}
+              {darkMode ? <Sun size={15} /> : <Moon size={15} />}
             </button>
 
             {/* Menu Open/Close */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className={`p-2 rounded-full border cursor-pointer transition-all duration-300 ${
+              className={`w-11 h-11 flex items-center justify-center rounded-full border cursor-pointer transition-all duration-300 ${
                 darkMode
                   ? 'border-[rgba(255,255,255,0.08)] bg-[#0B1016] text-[#A7B0BD] hover:text-[#F7F8FA]'
                   : 'border-[rgba(0,0,0,0.06)] bg-[#FFFFFF] text-[#4B5563] hover:text-[#111827]'
               }`}
               id="mobile-menu-trigger"
+              aria-label={isOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'}
             >
               {isOpen ? <X size={18} /> : <Menu size={18} />}
             </button>
@@ -216,7 +295,7 @@ export const Header: React.FC<HeaderProps> = ({
                     }`}
                     id={`mobile-nav-item-${item.id}`}
                   >
-                    {item.label}
+                    {t(item.label)}
                   </motion.button>
                 );
               })}
@@ -224,6 +303,38 @@ export const Header: React.FC<HeaderProps> = ({
 
             {/* Mobile Footer CTA */}
             <div className="space-y-4 mb-8" id="mobile-nav-footer">
+              {/* Mobile Language Switcher Buttons */}
+              <div className="flex items-center gap-2 p-1 bg-neutral-900/40 border border-neutral-900 rounded-xl mb-2" id="mobile-language-toggler">
+                <button
+                  onClick={() => {
+                    setLanguage('en');
+                    setIsOpen(false);
+                  }}
+                  className={`flex-1 py-2 rounded-lg text-center font-sans text-xs font-bold transition-all cursor-pointer ${
+                    language === 'en'
+                      ? 'bg-[#D6B16B] text-neutral-950 shadow-md font-extrabold'
+                      : 'text-neutral-400 hover:text-white'
+                  }`}
+                  id="mobile-lang-en-btn"
+                >
+                  🌐 English
+                </button>
+                <button
+                  onClick={() => {
+                    setLanguage('bn');
+                    setIsOpen(false);
+                  }}
+                  className={`flex-1 py-2 rounded-lg text-center font-sans text-xs font-bold transition-all cursor-pointer ${
+                    language === 'bn'
+                      ? 'bg-[#D6B16B] text-neutral-950 shadow-md font-extrabold'
+                      : 'text-neutral-400 hover:text-white'
+                  }`}
+                  id="mobile-lang-bn-btn"
+                >
+                  🌐 বাংলা
+                </button>
+              </div>
+
               <button
                 onClick={() => {
                   setIsOpen(false);
@@ -236,7 +347,7 @@ export const Header: React.FC<HeaderProps> = ({
                 }`}
                 id="mobile-nav-cta-button"
               >
-                <span>Request Free Consultation</span>
+                <span>{t('Request Free Consultation')}</span>
                 <ArrowRight size={14} />
               </button>
 

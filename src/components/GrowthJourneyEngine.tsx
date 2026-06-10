@@ -367,10 +367,10 @@ export const GrowthJourneyEngine: React.FC<GrowthJourneyEngineProps> = ({
                 {/* Horizontal progress back line */}
                 <div className="absolute top-[18px] left-[5%] right-[5%] h-0.5 bg-neutral-900 z-0" />
                 <motion.div 
-                  initial={{ width: 0 }}
-                  animate={{ width: '90%' }}
+                  initial={{ scaleX: 0 }}
+                  animate={{ scaleX: 1 }}
                   transition={{ duration: 0.8 }}
-                  className="absolute top-[18px] left-[5%] h-0.5 bg-gradient-to-r from-[#D6B16B] to-neutral-800 z-0"
+                  className="absolute top-[18px] left-[5%] w-[90%] h-0.5 bg-gradient-to-r from-[#D6B16B] to-neutral-800 z-0 origin-left"
                 />
 
                 {activeJourney.steps.map((st, sIdx) => {

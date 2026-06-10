@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Playfair+Display:ital,wght@0,400;1,400&family=Space+Grotesk:wght@450;500;700&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -50,12 +49,22 @@
   }
 }
 
-.animate-glow-gold {
-  animation: pulseGlowGold 14s infinite ease-in-out;
+/* Enable decorative animations only on desktop width for excellent mobile LCP/FCP */
+@media (min-width: 768px) {
+  .animate-glow-gold {
+    animation: pulseGlowGold 14s infinite ease-in-out;
+  }
+
+  .animate-glow-blue {
+    animation: pulseIceBlue 16s infinite ease-in-out;
+  }
 }
 
-.animate-glow-blue {
-  animation: pulseIceBlue 16s infinite ease-in-out;
+@media (max-width: 767px) {
+  .animate-glow-gold, .animate-glow-blue {
+    opacity: 0.1;
+    transform: none;
+  }
 }
 
 /* Scroll styling designed with precise Champagne Gold */

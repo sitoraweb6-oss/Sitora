@@ -3,8 +3,9 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
+import { useLanguage } from './LanguageContext';
 
 // Data
 import { ARTICLES_DATA } from './data';
@@ -18,18 +19,20 @@ import { CraftedExperiencesSection } from './components/CraftedExperiencesSectio
 import { PricingSection } from './components/PricingSection';
 import { AboutSection } from './components/AboutSection';
 import { InsightsSection } from './components/InsightsSection';
-import { TestimonialsSection } from './components/TestimonialsSection';
-import { FAQSection } from './components/FAQSection';
 import { Footer } from './components/Footer';
 import { InquiryForm, FloatingWhatsApp } from './components/InquiryForm';
-import { BlogPage } from './components/BlogPage';
-import { PortfolioPage } from './components/PortfolioPage';
-import { ProposalPlanner } from './components/ProposalPlanner';
-import { IndustrySolutionsExplorer } from './components/IndustrySolutionsExplorer';
-import { WebsiteBlueprintGenerator } from './components/WebsiteBlueprintGenerator';
-import { TransformationShowcase } from './components/TransformationShowcase';
-import { DigitalGrowthAudit } from './components/DigitalGrowthAudit';
-import { GrowthJourneyEngine } from './components/GrowthJourneyEngine';
+
+// Lazy-loaded sub-modules for extreme FCP/LCP and minimum main-thread work
+const TestimonialsSection = React.lazy(() => import('./components/TestimonialsSection').then(m => ({ default: m.TestimonialsSection })));
+const FAQSection = React.lazy(() => import('./components/FAQSection').then(m => ({ default: m.FAQSection })));
+const BlogPage = React.lazy(() => import('./components/BlogPage').then(m => ({ default: m.BlogPage })));
+const PortfolioPage = React.lazy(() => import('./components/PortfolioPage').then(m => ({ default: m.PortfolioPage })));
+const ProposalPlanner = React.lazy(() => import('./components/ProposalPlanner').then(m => ({ default: m.ProposalPlanner })));
+const IndustrySolutionsExplorer = React.lazy(() => import('./components/IndustrySolutionsExplorer').then(m => ({ default: m.IndustrySolutionsExplorer })));
+const WebsiteBlueprintGenerator = React.lazy(() => import('./components/WebsiteBlueprintGenerator').then(m => ({ default: m.WebsiteBlueprintGenerator })));
+const TransformationShowcase = React.lazy(() => import('./components/TransformationShowcase').then(m => ({ default: m.TransformationShowcase })));
+const DigitalGrowthAudit = React.lazy(() => import('./components/DigitalGrowthAudit').then(m => ({ default: m.DigitalGrowthAudit })));
+const GrowthJourneyEngine = React.lazy(() => import('./components/GrowthJourneyEngine').then(m => ({ default: m.GrowthJourneyEngine })));
 
 // SEO URL Slug Mappers
 const SLUG_TO_ID_MAP: Record<string, string> = {
@@ -59,6 +62,8 @@ const ID_TO_SLUG_MAP: Record<string, string> = {
 };
 
 export default function App() {
+  const { language, t } = useLanguage();
+
   // Dark mode by default
   const [darkMode, setDarkMode] = useState<boolean>(() => {
     const saved = localStorage.getItem('sitora_theme_preference');
@@ -73,9 +78,16 @@ export default function App() {
 
   // Page Routing State based on pathname, hash, and parameters
   const [currentView, setCurrentView] = useState<'home' | 'blog' | 'portfolio'>(() => {
-    const path = window.location.pathname;
+    let path = window.location.pathname;
     const params = new URLSearchParams(window.location.search);
     const view = params.get('view');
+
+    // Strip the '/bn' route prefix for unified internal view matching
+    if (path === '/bn' || path === '/bn/') {
+      path = '/';
+    } else if (path.startsWith('/bn/')) {
+      path = path.substring(3);
+    }
 
     if (path.startsWith('/blog/')) {
       return 'blog';
@@ -105,9 +117,16 @@ export default function App() {
   // Initial path/routing sync and event listeners
   useEffect(() => {
     const parseCurrentLocation = () => {
-      const path = window.location.pathname;
+      let path = window.location.pathname;
       const params = new URLSearchParams(window.location.search);
       const hash = window.location.hash;
+
+      // Strip the '/bn' route prefix for unified internal view matching
+      if (path === '/bn' || path === '/bn/') {
+        path = '/';
+      } else if (path.startsWith('/bn/')) {
+        path = path.substring(3);
+      }
 
       if (path === '/contact' || hash === '#contact') {
         setCurrentView('home');
@@ -198,24 +217,90 @@ export default function App() {
       }
     } else if (currentView === 'home') {
       const path = window.location.pathname;
-      if (path === '/services') {
+      const normalizedPath = path.startsWith('/bn') ? (path === '/bn' ? '/' : path.substring(3)) : path;
+      if (normalizedPath === '/services') {
         seoTitle = 'Website Development & Digital Marketing Services in Bangladesh | Sitora Web';
         seoDesc = 'Explore professional website development, high-converting landing pages, e-commerce storefronts, Meta pixel CAPI setup, SEO, and social media management by Sitora Web.';
         canonicalUrl = 'https://sitoraweb.com/services';
-      } else if (path === '/pricing') {
+      } else if (normalizedPath === '/pricing') {
         seoTitle = 'Website Pricing in Bangladesh | Sitora Web';
         seoDesc = 'Get clear, transparent website design and development cost in Bangladesh. Pricing plans starts from ৳4,000 to ৳35,000 for customized digital assets.';
         canonicalUrl = 'https://sitoraweb.com/pricing';
-      } else if (path === '/about') {
+      } else if (normalizedPath === '/about') {
         seoTitle = 'About Sitora Web | Premium Digital Agency';
         seoDesc = "About Sitora Web. Narayanganj's premium digital marketing agency. Hand-coding high-speed commercial websites and driving qualified inquiries for Bangladesh businesses.";
         canonicalUrl = 'https://sitoraweb.com/about';
-      } else if (path === '/contact') {
+      } else if (normalizedPath === '/contact') {
         seoTitle = 'Contact Sitora Web | Free Consultation';
         seoDesc = "Let's discuss your next digital project. Book your free consultation for custom website designs, landing pages, digital marketing, and Meta systems.";
         canonicalUrl = 'https://sitoraweb.com/contact';
       }
     }
+
+    // Adapt SEO for Bangla when active language is set to 'bn'
+    if (language === 'bn') {
+      if (currentView === 'portfolio') {
+        seoTitle = 'পোর্টফোলিও | সিতোরা ওয়েব নির্মিত সফল ওয়েবসাইট সমূহ';
+        seoDesc = 'সিতোরা ওয়েব দ্বারা নির্মিত গতিসম্পন্ন এবং প্রফেশনাল লাইভ ওয়েবসাইট পোর্টফোলিও দেখুন। হাই-কনভার্টিং ল্যান্ডিং পেজ এবং ই-কমার্স সলিউশনস।';
+      } else if (currentView === 'blog') {
+        if (activeArticleId) {
+          const article = ARTICLES_DATA.find(a => a.id === activeArticleId);
+          if (article) {
+            seoTitle = `${t(article.title)} | সিতোরা ইনসাইটস`;
+            seoDesc = t(article.excerpt);
+            isArticle = true;
+          } else {
+            seoTitle = 'সিতোরা ইনসাইটস | ব্যবসায়িক বৃদ্ধির কৌশল সমূহ';
+            seoDesc = 'বাংলাদেশে আপনার ব্যবসার অনলাইন সেলস এবং গ্রোথ বাড়াতে সহায়ক এবং অত্যন্ত কার্যকর ডিজিটাল গাইডলাইন ও অন-পেজ SEO টিপস।';
+          }
+        } else {
+          seoTitle = 'সিতোরা ইনসাইটস | ব্যবসায়িক বৃদ্ধির কৌশল সমূহ';
+          seoDesc = 'বাংলাদেশে আপনার ব্যবসার অনলাইন সেলস এবং গ্রোথ বাড়াতে সহায়ক এবং অত্যন্ত কার্যকর ডিজিটাল গাইডলাইন ও অন-পেজ SEO টিপস।';
+        }
+      } else if (currentView === 'home') {
+        const path = window.location.pathname;
+        const normalizedPath = path.startsWith('/bn') ? (path === '/bn' ? '/' : path.substring(3)) : path;
+        if (normalizedPath === '/services') {
+          seoTitle = 'ওয়েবসাইট ডেভেলপমেন্ট ও ডিজিটাল মার্কেটিং সার্ভিসসমূহ | সিতোরা ওয়েব';
+          seoDesc = 'প্রিমিয়াম ওয়েবসাইট ডেভেলপমেন্ট, হাই-কনভার্টিং ল্যান্ডিং পেজ ডিজাইন, ই-কমার্স ওয়েবসাইট ডেভেলপমেন্ট এবং ফেসবুক অ্যাডস ট্র্যাকিং সলিউশন।';
+        } else if (normalizedPath === '/pricing') {
+          seoTitle = 'ওয়েবসাইট তৈরির খরচ ও প্রাইসিং প্ল্যান | সিতোরা ওয়েব';
+          seoDesc = 'বাংলাদেশে সিতোরা ওয়েবের স্বচ্ছ ও চমৎকার বাজেট প্ল্যানসমূহ দেখুন। যেকোনো হাই-কোয়ালিটি বিজনেসের জন্য প্রফেশনাল ডিজিটাল সলিউশন।';
+        } else if (normalizedPath === '/about') {
+          seoTitle = 'সিতোরা ওয়েব সম্পর্কে বিস্তারিত | প্রিমিয়াম ডিজিটাল এজেন্সি';
+          seoDesc = 'সিতোরা ওয়েব সম্পর্কে জানুন। ঢাকার কাছে নারায়ণগঞ্জের প্রিমিয়াম আইটি এজেন্সি, যা হ্যান্ড-কোডেড সুপার-ফাস্ট ওয়েবসাইট এবং কার্যকর সেবা প্রদান করে থাকে।';
+        } else if (normalizedPath === '/contact') {
+          seoTitle = 'যোগাযোগ করুন সিতোরা ওয়েবের সাথে';
+          seoDesc = 'আপনার প্রজেক্ট আলোচনা করতে আমাদের সাথে যোগাযোগ করুন। আপনার ব্যবসার বৃদ্ধির জন্য আজই ফ্রি কনসালটেশন বুক করুন।';
+        } else {
+          seoTitle = 'সিতোরা ওয়েব | প্রিমিয়াম ওয়েবসাইট ডেভেলপমেন্ট এবং ডিজিটাল মার্কেটিং এজেন্সি';
+          seoDesc = 'সিতোরা ওয়েব বাংলাদেশের শীর্ষস্থানীয় প্রিমিয়াম ওয়েবসাইট ডিজাইন ও ডিজিটাল মার্কেটিং এজেন্সি। ব্যবসা প্রসারে আমরা হ্যান্ড-কোডেড স্পিডি ওয়েবসাইট তৈরি করি।';
+        }
+      }
+    }
+
+    // Set alternate language hreflang links for multilingual crawlers
+    const cleanPath = window.location.pathname.startsWith('/bn')
+      ? (window.location.pathname === '/bn' ? '/' : window.location.pathname.substring(3))
+      : window.location.pathname;
+
+    let enHrefEl = document.querySelector('link[hreflang="en"]');
+    if (!enHrefEl) {
+      enHrefEl = document.createElement('link');
+      enHrefEl.setAttribute('rel', 'alternate');
+      enHrefEl.setAttribute('hreflang', 'en');
+      document.head.appendChild(enHrefEl);
+    }
+    enHrefEl.setAttribute('href', `https://sitoraweb.com${cleanPath}`);
+
+    let bnHrefEl = document.querySelector('link[hreflang="bn"]');
+    if (!bnHrefEl) {
+      bnHrefEl = document.createElement('link');
+      bnHrefEl.setAttribute('rel', 'alternate');
+      bnHrefEl.setAttribute('hreflang', 'bn');
+      document.head.appendChild(bnHrefEl);
+    }
+    bnHrefEl.setAttribute('href', `https://sitoraweb.com${cleanPath === '/' ? '/bn' : `/bn${cleanPath}`}`);
 
     // Set title
     document.title = seoTitle;
@@ -421,16 +506,20 @@ export default function App() {
   // Custom controlled set article handler for clean URL support
   const handleSetActiveArticleId = (id: string | null) => {
     setActiveArticleId(id);
+    const isBn = language === 'bn';
+    const langPrefix = isBn ? '/bn' : '';
     if (id) {
       const slug = ID_TO_SLUG_MAP[id] || id;
-      window.history.pushState({}, '', `/blog/${slug}`);
+      window.history.pushState({}, '', `${langPrefix}/blog/${slug}`);
     } else {
-      window.history.pushState({}, '', '/sitora-insights');
+      window.history.pushState({}, '', `${langPrefix}/sitora-insights`);
     }
   };
 
   // Upgraded navigate with browser history pushState
   const handleNavigate = (view: 'home' | 'blog' | 'portfolio', sectionId?: string) => {
+    const isBn = language === 'bn';
+    const langPrefix = isBn ? '/bn' : '';
     let targetPath = '/';
     if (view === 'blog') {
       targetPath = '/sitora-insights';
@@ -441,6 +530,12 @@ export default function App() {
       else if (sectionId === 'pricing') targetPath = '/pricing';
       else if (sectionId === 'about') targetPath = '/about';
       else if (sectionId === 'faq') targetPath = '/faq';
+    }
+
+    // Prefix language router tag
+    if (isBn) {
+      if (targetPath === '/') targetPath = '/bn';
+      else targetPath = `/bn${targetPath}`;
     }
 
     window.history.pushState({}, '', targetPath);
@@ -527,10 +622,12 @@ export default function App() {
                     />
                     
                     {/* Sitora Web Industry Solutions Explorer */}
-                    <IndustrySolutionsExplorer 
-                      darkMode={darkMode}
-                      onOpenInquiry={handleOpenInquiry}
-                    />
+                    <Suspense fallback={<div className="min-h-[150px] w-full" />}>
+                      <IndustrySolutionsExplorer 
+                        darkMode={darkMode}
+                        onOpenInquiry={handleOpenInquiry}
+                      />
+                    </Suspense>
                     
                     {/* Apple inspired premium pricing cards */}
                     <PricingSection 
@@ -540,14 +637,18 @@ export default function App() {
                     
                     {/* Interactive Proposal Planner section copy on the homepage */}
                     <section className="py-20 sm:py-24 relative px-4 sm:px-6 lg:px-8 border-t border-neutral-900/10 dark:border-neutral-900/50" id="home-proposal-planner-section">
-                      <ProposalPlanner darkMode={darkMode} />
+                      <Suspense fallback={<div className="min-h-[150px] w-full" />}>
+                        <ProposalPlanner darkMode={darkMode} />
+                      </Suspense>
                     </section>
                     
                     {/* Sitora Web tailored Website Blueprint Generator */}
-                    <WebsiteBlueprintGenerator 
-                      darkMode={darkMode}
-                      onOpenInquiry={handleOpenInquiry}
-                    />
+                    <Suspense fallback={<div className="min-h-[150px] w-full" />}>
+                      <WebsiteBlueprintGenerator 
+                        darkMode={darkMode}
+                        onOpenInquiry={handleOpenInquiry}
+                      />
+                    </Suspense>
                     
                     {/* Crafted Experiences editorial list */}
                     <CraftedExperiencesSection 
@@ -557,28 +658,36 @@ export default function App() {
                     />
                     
                     {/* Sitora Web interactive Before After Transformation Showcase */}
-                    <TransformationShowcase 
-                      darkMode={darkMode}
-                      onOpenInquiry={handleOpenInquiry}
-                      onExplorePortfolio={() => handleNavigate('portfolio')}
-                    />
+                    <Suspense fallback={<div className="min-h-[150px] w-full" />}>
+                      <TransformationShowcase 
+                        darkMode={darkMode}
+                        onOpenInquiry={handleOpenInquiry}
+                        onExplorePortfolio={() => handleNavigate('portfolio')}
+                      />
+                    </Suspense>
                     
                     {/* Sitora Web interactive Digital Growth Audit Engine */}
-                    <DigitalGrowthAudit 
-                      darkMode={darkMode}
-                      onOpenInquiry={handleOpenInquiry}
-                    />
+                    <Suspense fallback={<div className="min-h-[150px] w-full" />}>
+                      <DigitalGrowthAudit 
+                        darkMode={darkMode}
+                        onOpenInquiry={handleOpenInquiry}
+                      />
+                    </Suspense>
                     
                     {/* Sitora Web tailored luxury Growth Journey Engine */}
-                    <GrowthJourneyEngine 
-                      darkMode={darkMode}
-                      onOpenInquiry={handleOpenInquiry}
-                    />
+                    <Suspense fallback={<div className="min-h-[150px] w-full" />}>
+                      <GrowthJourneyEngine 
+                        darkMode={darkMode}
+                        onOpenInquiry={handleOpenInquiry}
+                      />
+                    </Suspense>
                     
                     {/* Client stories trust testimonials */}
-                    <TestimonialsSection 
-                      darkMode={darkMode} 
-                    />
+                    <Suspense fallback={<div className="min-h-[150px] w-full" />}>
+                      <TestimonialsSection 
+                        darkMode={darkMode} 
+                      />
+                    </Suspense>
                     
                     {/* Advanced strategic Sitora Insights */}
                     <InsightsSection 
@@ -587,9 +696,11 @@ export default function App() {
                     />
                     
                     {/* FAQ Accordions block */}
-                    <FAQSection 
-                      darkMode={darkMode} 
-                    />
+                    <Suspense fallback={<div className="min-h-[150px] w-full" />}>
+                      <FAQSection 
+                        darkMode={darkMode} 
+                      />
+                    </Suspense>
                   </motion.div>
                 ) : currentView === 'portfolio' ? (
                   <motion.div
@@ -599,21 +710,25 @@ export default function App() {
                     exit={{ opacity: 0, y: -15 }}
                     transition={{ duration: 0.4 }}
                   >
-                    <PortfolioPage 
+                    <Suspense fallback={<div className="min-h-screen flex items-center justify-center" />}>
+                      <PortfolioPage 
+                        darkMode={darkMode}
+                        onBackToHome={() => handleNavigate('home', 'home')}
+                        onOpenInquiry={handleOpenInquiry}
+                      />
+                    </Suspense>
+                  </motion.div>
+                ) : (
+                  <Suspense fallback={<div className="min-h-screen flex items-center justify-center" />}>
+                    <BlogPage 
+                      key="blog-viewport"
                       darkMode={darkMode}
                       onBackToHome={() => handleNavigate('home', 'home')}
                       onOpenInquiry={handleOpenInquiry}
+                      activeArticleId={activeArticleId}
+                      setActiveArticleId={handleSetActiveArticleId}
                     />
-                  </motion.div>
-                ) : (
-                  <BlogPage 
-                    key="blog-viewport"
-                    darkMode={darkMode}
-                    onBackToHome={() => handleNavigate('home', 'home')}
-                    onOpenInquiry={handleOpenInquiry}
-                    activeArticleId={activeArticleId}
-                    setActiveArticleId={handleSetActiveArticleId}
-                  />
+                  </Suspense>
                 )}
               </AnimatePresence>
             </main>

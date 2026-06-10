@@ -381,10 +381,10 @@ export const DigitalGrowthAudit: React.FC<DigitalGrowthAuditProps> = ({
                       darkMode ? 'bg-neutral-900' : 'bg-neutral-200'
                     }`} id="assessment-progress-track">
                       <motion.div 
-                        initial={{ width: 0 }}
-                        animate={{ width: `${progressPercent}%` }}
+                        initial={{ scaleX: 0 }}
+                        animate={{ scaleX: progressPercent / 100 }}
                         transition={{ duration: 0.35, ease: "easeOut" }}
-                        className="h-full bg-gradient-to-r from-[#D6B16B] to-[#e4cb9c] rounded-full"
+                        className="h-full bg-gradient-to-r from-[#D6B16B] to-[#e4cb9c] rounded-full origin-left w-full"
                         id="assessment-progress-indicator"
                       />
                     </div>

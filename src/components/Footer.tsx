@@ -214,11 +214,12 @@ export const Footer: React.FC<FooterProps> = ({ onOpenInquiry, darkMode, onNavig
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`flex items-center gap-2 p-2 rounded-lg border text-[10px] font-sans transition-all duration-300 ${
+                    className={`flex items-center gap-2 p-2.5 px-3.5 rounded-lg border text-[10px] font-sans transition-all duration-300 min-h-11 ${
                       darkMode 
                         ? 'border-neutral-900 bg-neutral-950 hover:border-neutral-800 hover:bg-neutral-900 text-neutral-400 hover:text-white' 
                         : 'border-neutral-200 bg-white hover:border-neutral-300 text-neutral-600 hover:text-black hover:shadow-sm'
                     }`}
+                    aria-label={`Visit our ${social.name} profile`}
                     id={`footer-social-link-${social.name.replace(/\s+/g, '-')}`}
                   >
                     <span className="text-[#D6B16B]">{social.icon}</span>

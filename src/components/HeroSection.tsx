@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion } from 'motion/react';
+import { useLanguage } from '../LanguageContext';
 import { 
   ArrowRight, 
   Terminal, 
@@ -22,6 +23,7 @@ interface HeroSectionProps {
 export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenInquiry, darkMode }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const { language, t } = useLanguage();
 
   // Parallax mouse position tracking for visual dynamic effects
   useEffect(() => {
@@ -157,7 +159,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenInquiry, darkMod
               <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#D6B16B]"></span>
             </span>
             <span className="text-[9px] sm:text-xs uppercase tracking-[0.2em] font-mono leading-none">
-              Trusted by 300+ Clients &amp; Organizations
+              {t('Trusted by 300+ Clients & Organizations')}
             </span>
           </motion.div>
 
@@ -172,7 +174,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenInquiry, darkMod
               }`}
               id="hero-brand-statement"
             >
-              Premium <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#D6B16B] via-[#eed8ac] to-[#bf9b59]">Website Development</span> &amp; Digital Marketing Agency in Bangladesh
+              {language === 'bn' ? (
+                <>প্রিমিয়াম <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#D6B16B] via-[#eed8ac] to-[#bf9b59]">ওয়েবসাইট ডেভেলপমেন্ট</span> এবং ডিজিটাল মার্কেটিং এজেন্সি</>
+              ) : (
+                <>Premium <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#D6B16B] via-[#eed8ac] to-[#bf9b59]">Website Development</span> &amp; Digital Marketing Agency in Bangladesh</>
+              )}
             </motion.h1>
 
             {/* Secondary Headline */}
@@ -184,7 +190,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenInquiry, darkMod
                 darkMode ? 'text-neutral-200' : 'text-neutral-800'
               }`}
             >
-              Premium <span className="text-[#D6B16B] underline decoration-[#D6B16B]/30 underline-offset-4">Websites.</span> Powerful Marketing. <span className="text-white bg-neutral-900 px-2.5 py-0.5 rounded-md border border-neutral-800">Measurable Growth.</span>
+              {language === 'bn' ? (
+                <>প্রিমিয়াম <span className="text-[#D6B16B] underline decoration-[#D6B16B]/30 underline-offset-4">ওয়েবসাইট।</span> পাওয়ারফুল মার্কেটিং। <span className="text-white bg-neutral-900 px-2.5 py-0.5 rounded-md border border-neutral-800">কার্যকর গ্রোথ।</span></>
+              ) : (
+                <>Premium <span className="text-[#D6B16B] underline decoration-[#D6B16B]/30 underline-offset-4">Websites.</span> Powerful Marketing. <span className="text-white bg-neutral-900 px-2.5 py-0.5 rounded-md border border-neutral-800">Measurable Growth.</span></>
+              )}
             </motion.h2>
           </div>
 
@@ -198,7 +208,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenInquiry, darkMod
             }`}
             id="hero-subdescription"
           >
-            We help businesses build, grow, and scale through independent, high-performance web systems and bulletproof digital acquisition models. No lazy templates. Just highly tailored digital solutions engineered for scale.
+            {language === 'bn' ? (
+              <>আমরা সম্পূর্ণ হ্যান্ড-কোডেড সুপার-স্পিড স্বাধীন ওয়েব সিস্টেম এবং চমৎকার ডিজিটাল মার্কেটিং সলিউশনস দ্বারা ব্যবসায়িক সেলস ও কাস্টমার বৃদ্ধি করতে সহায়তা করি। কোনো স্লো টেমপ্লেট নয়, কেবল নিখুঁত কার্যকারিতা।</>
+            ) : (
+              <>We help businesses build, grow, and scale through independent, high-performance web systems and bulletproof digital acquisition models. No lazy templates. Just highly tailored digital solutions engineered for scale.</>
+            )}
           </motion.p>
 
           {/* Dynamic Supporting Business Positioning details */}
@@ -212,14 +226,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenInquiry, darkMod
             <div className="flex items-start gap-2.5">
               <CheckCircle2 size={13} className="text-[#D6B16B] mt-1 shrink-0" />
               <div>
-                <span className="text-[10px] font-mono text-neutral-500 uppercase block leading-none mb-1">Architecture</span>
+                <span className="text-[10px] font-mono text-neutral-500 uppercase block leading-none mb-1">{language === 'bn' ? 'আর্কিটেকচার' : 'Architecture'}</span>
                 <span className={`text-[11px] font-bold ${darkMode ? 'text-neutral-300' : 'text-neutral-800'}`}>100% Hand-Coded</span>
               </div>
             </div>
             <div className="flex items-start gap-2.5">
               <CheckCircle2 size={13} className="text-[#D6B16B] mt-1 shrink-0" />
               <div>
-                <span className="text-[10px] font-mono text-neutral-500 uppercase block leading-none mb-1">Attribution</span>
+                <span className="text-[10px] font-mono text-neutral-500 uppercase block leading-none mb-1">{language === 'bn' ? 'কনভার্সন' : 'Attribution'}</span>
                 <span className={`text-[11px] font-bold ${darkMode ? 'text-neutral-300' : 'text-neutral-800'}`}>Meta Pixel &amp; CAPI</span>
               </div>
             </div>
@@ -238,7 +252,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenInquiry, darkMod
               className="group flex items-center justify-center gap-2 py-4 px-8 rounded-xl font-sans text-xs font-bold uppercase tracking-wider text-neutral-950 bg-[#D6B16B] hover:bg-[#ebd5ad] hover:scale-[1.03] transition-all duration-300 shadow-[0_0_35px_rgba(214,177,107,0.22)] cursor-pointer w-full sm:w-auto"
               id="hero-primary-consult-cta"
             >
-              <span>Get a Free Consultation</span>
+              <span>{t('Get a Free Consultation')}</span>
               <ArrowRight size={13} className="transition-transform duration-300 group-hover:translate-x-1" />
             </button>
 
@@ -251,7 +265,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenInquiry, darkMod
               }`}
               id="hero-secondary-quote-cta"
             >
-              <span>View Projects</span>
+              <span>{language === 'bn' ? 'পোর্টফোলিও দেখুন' : 'View Projects'}</span>
               <ChevronRight size={14} className="transition-transform duration-300 group-hover:translate-x-0.5" />
             </button>
           </motion.div>

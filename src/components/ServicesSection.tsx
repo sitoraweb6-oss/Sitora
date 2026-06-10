@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import { SERVICES_DATA } from '../data';
 import { Service } from '../types';
+import { useLanguage } from '../LanguageContext';
 
 interface ServicesSectionProps {
   onOpenInquiry: (type: string) => void;
@@ -26,6 +27,7 @@ interface ServicesSectionProps {
 
 export const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenInquiry, darkMode }) => {
   const [activeTab, setActiveTab] = useState<'all' | 'web' | 'growth'>('all');
+  const { language, t } = useLanguage();
 
   // Map strings to Lucide icon components dynamically
   const renderIcon = (iconName: string, className: string) => {
@@ -81,15 +83,15 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenInquiry,
         <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-16 sm:mb-20 gap-6" id="services-header">
           <div className="max-w-2xl animate-fade-in" id="services-heading-block">
             <span className="text-[10px] font-mono text-[#D6B16B] uppercase tracking-[0.25em] block mb-3" id="services-eyebrow">
-              Expert Competencies // Sitora Tech
+              {t('Expert Competencies // Sitora Tech')}
             </span>
             <h2 className={`font-sans text-3xl sm:text-4.5xl md:text-5xl font-black tracking-tight uppercase leading-[1.1] sm:leading-none ${
               darkMode ? 'text-[#F7F8FA]' : 'text-[#111827]'
             }`} id="services-title">
-              Services We Provide
+              {t('Services We Provide')}
             </h2>
             <p className="mt-4 max-w-xl text-xs sm:text-sm text-neutral-400 font-sans leading-relaxed" id="services-sub">
-              We operate fully hand-coded architectures that bypass slow templates, protecting page performance metrics and optimizing click-attributions.
+              {t('We operate fully hand-coded architectures that bypass slow templates, protecting page performance metrics and optimizing click-attributions.')}
             </p>
           </div>
           
@@ -97,8 +99,8 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenInquiry,
           <div className="hidden lg:flex items-center gap-4 text-left font-mono text-[9px] text-neutral-500 bg-neutral-950/40 border border-neutral-900 p-3 rounded-lg">
             <Activity size={12} className="text-[#D6B16B]" />
             <div>
-              <p className="text-neutral-400 font-bold uppercase">SITORA CORE V4 ENGINE // ENHANCED</p>
-              <p>LATENCY MEASURABLE REDUCTION // 0.24s AVG</p>
+              <p className="text-neutral-400 font-bold uppercase">{t('SITORA CORE V4 ENGINE // ENHANCED')}</p>
+              <p>{t('LATENCY MEASURABLE REDUCTION // 0.24s AVG')}</p>
             </div>
           </div>
         </div>
@@ -118,7 +120,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenInquiry,
                 }`}
                 id={`services-tab-btn-${tab.id}`}
               >
-                <span>{tab.label}</span>
+                <span>{t(tab.label)}</span>
                 <span className={`text-[9px] px-1.5 py-0.5 rounded ${
                   isActive ? 'bg-neutral-950/20 text-neutral-950' : 'bg-neutral-950/60 text-neutral-500'
                 }`}>
@@ -169,23 +171,23 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenInquiry,
                   <h3 className={`font-sans text-lg sm:text-xl font-bold uppercase tracking-tight mb-3 ${
                     darkMode ? 'text-[#F7F8FA]' : 'text-[#111827]'
                   }`} id={`service-title-${service.id}`}>
-                    {service.title}
+                    {t(service.title)}
                   </h3>
 
                   {/* Dense, High Fidelity Copy */}
                   <p className="text-xs sm:text-[12.5px] text-neutral-400 font-sans leading-relaxed mb-6" id={`service-desc-${service.id}`}>
-                    {service.shortDesc}
+                    {t(service.shortDesc)}
                   </p>
 
                   {/* Sub-Feature Multi Lists */}
                   <div className="space-y-2 border-t border-[rgba(255,255,255,0.08)] dark:border-[rgba(255,255,255,0.08)] pt-5 mb-8" id={`service-features-${service.id}`}>
                     <span className="text-[9.5px] font-mono text-[#D6B16B] uppercase tracking-widest block mb-2 font-black">
-                      SITORA CAPABILITIES SCOPE
+                      {t('SITORA CAPABILITIES SCOPE')}
                     </span>
                     {service.features.map((feature, fIdx) => (
                       <div key={fIdx} className="flex items-start gap-2.5 text-[11px] text-neutral-400 font-sans" id={`service-f-${service.id}-${fIdx}`}>
                         <Check size={11} className="text-[#D6B16B] mt-0.5 shrink-0" />
-                        <span className="leading-snug text-neutral-300 group-hover:text-white transition-colors">{feature}</span>
+                        <span className="leading-snug text-neutral-300 group-hover:text-white transition-colors">{t(feature)}</span>
                       </div>
                     ))}
                   </div>
@@ -201,7 +203,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenInquiry,
                   }`}
                   id={`service-cta-${service.id}`}
                 >
-                  <span>Request Core Quote</span>
+                  <span>{t('Request Core Quote')}</span>
                   <ArrowUpRight size={13} className="text-neutral-500 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 group-hover/btn:text-[#D6B16B] transition-all" />
                 </button>
 
@@ -213,7 +215,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenInquiry,
         {/* Bottom Featured Services Chips Row */}
         <div className="mt-16 sm:mt-20 pt-8 border-t border-neutral-900/10 dark:border-neutral-900 flex flex-col items-center text-center gap-4" id="services-featured-chips-container">
           <span className="text-[9px] font-mono text-neutral-500 uppercase tracking-[0.25em] font-bold">
-            Guaranteed Technical Implementation Standard Core
+            {t('Guaranteed Technical Implementation Standard Core')}
           </span>
           <div className="flex flex-wrap justify-center gap-2 max-w-4xl" id="services-chips-flex">
             {bottomHighlightChips.map((chip, idx) => (
@@ -222,7 +224,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenInquiry,
                 className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-neutral-900/30 bg-neutral-950/50 dark:bg-neutral-950/40 dark:border-neutral-900 font-mono text-[9px] text-neutral-400"
               >
                 {chip.icon}
-                <span>{chip.label}</span>
+                <span>{t(chip.label)}</span>
               </div>
             ))}
           </div>
