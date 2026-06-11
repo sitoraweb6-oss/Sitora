@@ -390,7 +390,7 @@ export default function App() {
       "name": "Sitora Web",
       "image": resolvedOgImage,
       "telephone": "+8801629586290",
-      "email": "sitoraweb6@gmail.com",
+      "email": "hello@sitora.org",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Narayanganj City",

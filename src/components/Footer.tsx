@@ -125,7 +125,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenInquiry, darkMode, onNavig
                 </div>
                 <div className="flex items-center gap-2">
                   <Mail size={12} className="text-[#D6B16B]" />
-                  <a href="mailto:sitoraweb6@gmail.com" className="hover:text-white transition-colors">sitoraweb6@gmail.com</a>
+                  <a href="mailto:hello@sitora.org" className="hover:text-white transition-colors">hello@sitora.org</a>
                 </div>
                 
                 {/* WhatsApp Business Hotline */}
