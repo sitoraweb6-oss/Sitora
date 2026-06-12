@@ -33,15 +33,24 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenInquiry,
   const [activeCategory, setActiveCategory] = useState<CategoryContent>(CATEGORIES_DATA[0]);
   const [selectedSubService, setSelectedSubService] = useState<SubServiceContent | null>(null);
 
-  // Bring active category pill into view automatically
+  const isFirstRender = React.useRef(true);
+
+  // Bring active category pill into view automatically inside the horizontal scroll container
   useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
     if (activeCategory?.id) {
+      const scrollContainer = document.getElementById('services-categories-scroll');
       const activeElement = document.getElementById(`services-tab-${activeCategory.id}`);
-      if (activeElement) {
-        activeElement.scrollIntoView({
-          behavior: 'smooth',
-          block: 'nearest',
-          inline: 'center'
+      if (scrollContainer && activeElement) {
+        const containerRect = scrollContainer.getBoundingClientRect();
+        const elementRect = activeElement.getBoundingClientRect();
+        const offset = (elementRect.left - containerRect.left) - (containerRect.width / 2) + (elementRect.width / 2);
+        scrollContainer.scrollTo({
+          left: scrollContainer.scrollLeft + offset,
+          behavior: 'smooth'
         });
       }
     }
