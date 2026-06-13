@@ -45,6 +45,18 @@
 
     <!-- Robots and verification -->
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+
+    <!-- Google tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BV90V3NNEP" id="google-analytics-script"></script>
+    <script id="google-analytics-init">
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-BV90V3NNEP', {
+        send_page_view: false
+      });
+    </script>
   </head>
   <body>
     <div id="root"></div>

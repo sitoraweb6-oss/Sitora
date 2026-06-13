@@ -492,7 +492,16 @@ export default function App() {
         });
       }
     }
-  }, [currentView, activeArticleId]);
+
+    // Google Analytics 4 page_view tracking
+    if (typeof (window as any).gtag === 'function') {
+      (window as any).gtag('event', 'page_view', {
+        page_path: window.location.pathname + window.location.search,
+        page_title: seoTitle,
+        page_location: window.location.href
+      });
+    }
+  }, [currentView, activeArticleId, language]);
 
   const handleToggleTheme = () => {
     setDarkMode(!darkMode);
