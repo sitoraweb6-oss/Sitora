@@ -4,8 +4,6 @@ import {
   ArrowUpRight, 
   Search, 
   Cpu, 
-  ShoppingCart, 
-  Award, 
   BarChart2, 
   HelpCircle,
   ExternalLink
@@ -82,144 +80,6 @@ export const CraftedExperiencesSection: React.FC<CraftedExperiencesProps> = ({
       return matchesCategory && matchesSearch;
     });
   }, [selectedCategory, searchQuery]);
-
-  // Render high-fidelity client-side browser interior views
-  const renderMockupScreen = (type: 'saas' | 'ecommerce' | 'corporate' | 'creative' | 'analytics') => {
-    switch (type) {
-      case 'ecommerce':
-        return (
-          <div className="relative w-full h-full bg-[#030508] flex flex-col justify-between p-4 overflow-hidden text-left" id="mock-desktop-ecommerce">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-[#D6B16B]/10 rounded-full blur-2xl pointer-events-none" />
-            <div className="flex items-center justify-between border-b border-neutral-900 pb-1.5">
-              <span className="text-[7.5px] font-mono text-neutral-400 uppercase tracking-widest font-bold">SITORALUX.CO</span>
-              <div className="flex items-center gap-1.5 text-[6.5px] font-mono text-[#D6B16B]">
-                <ShoppingCart size={9} />
-                <span>BAG(3)</span>
-                <span className="bg-emerald-500 text-black px-1 py-[1px] rounded font-black text-[5.5px]">৳1,450 BDT</span>
-              </div>
-            </div>
-            <div className="grid grid-cols-12 gap-3 my-auto items-center">
-              <div className="col-span-8 space-y-1">
-                <span className="text-[6.5px] font-mono text-[#D6B16B] uppercase tracking-widest block font-bold">Limited Drop</span>
-                <h4 className="font-sans text-[11.5px] font-black text-white leading-tight uppercase tracking-tight">
-                  Organic Blend V2
-                </h4>
-                <p className="text-[7.5px] text-neutral-400 leading-snug">
-                  Premium fluid e-commerce store with high conversions tracking.
-                </p>
-                <div className="flex items-center gap-1.5 pt-0.5">
-                  <span className="px-1.5 py-0.5 bg-neutral-950 border border-neutral-900 text-[6.5px] text-neutral-440 font-mono">100g</span>
-                  <span className="px-1.5 py-0.5 bg-[#D6B16B]/10 text-[#D6B16B] text-[6.5px] font-mono font-bold border border-[#D6B16B]/20 rounded">৳1,450 BDT</span>
-                </div>
-              </div>
-              <div className="col-span-4 flex justify-center">
-                <div className="relative w-11 h-11 rounded-xl bg-gradient-to-tr from-neutral-950 to-[#D6B16B]/10 border border-neutral-800 flex items-center justify-center shadow-lg">
-                  <ShoppingCart size={15} className="text-[#D6B16B] opacity-85" />
-                  <span className="absolute -top-1 -right-1 w-3 h-3 bg-emerald-500 text-neutral-950 text-[6px] rounded-full flex items-center justify-center font-bold font-mono">✓</span>
-                </div>
-              </div>
-            </div>
-            <div className="flex items-center justify-between pt-1.5 border-t border-neutral-900/60">
-              <span className="text-[6.5px] font-mono text-neutral-500">CAPI ENGINE INTUITIVE</span>
-              <span className="px-2 py-0.5 text-[6.5px] rounded bg-[#D6B16B] text-neutral-950 font-black uppercase tracking-wider font-sans">
-                Checkout →
-              </span>
-            </div>
-          </div>
-        );
-
-      case 'corporate':
-        return (
-          <div className="relative w-full h-full bg-[#030508] flex flex-col justify-between p-4 overflow-hidden text-left" id="mock-desktop-corporate">
-            <div className="absolute -bottom-6 -left-6 w-28 h-28 bg-[#3b82f6]/5 rounded-full blur-2xl pointer-events-none" />
-            <div className="flex items-center justify-between border-b border-neutral-900 pb-1.5">
-              <span className="text-[7.5px] font-mono text-neutral-500 uppercase tracking-widest font-semibold">APEX BLUEPRINT</span>
-              <span className="text-[6px] font-mono px-1.5 py-0.5 bg-neutral-950 border border-neutral-900 text-neutral-400 rounded-full">EST. 2026</span>
-            </div>
-            <div className="my-auto space-y-1.5">
-              <div className="flex items-center gap-1">
-                <Award size={8} className="text-[#D6B16B]" />
-                <span className="text-[6px] text-[#D6B16B] font-mono tracking-widest uppercase font-bold">AUTHORITY DIRECTORY</span>
-              </div>
-              <h4 className="font-sans text-[11.5px] font-black text-white leading-tight uppercase tracking-tight">
-                Institutional Authority
-              </h4>
-              <p className="text-[7.5px] text-neutral-400 leading-snug">
-                Engineered for maximum speed and absolute business trust index.
-              </p>
-              <div className="flex gap-1.5 pt-0.5" id="card-corp-pills-desktop">
-                <div className="px-1.5 py-0.5 border border-neutral-900 bg-neutral-950 rounded text-[6px] font-mono text-emerald-400 font-bold">
-                  SEO 99%
-                </div>
-                <div className="px-1.5 py-0.5 border border-neutral-900 bg-neutral-950 rounded text-[6px] font-mono text-[#D6B16B] font-semibold">
-                  FID 100%
-                </div>
-              </div>
-            </div>
-            <div className="flex items-center justify-between pt-1.5 border-t border-neutral-900/60 text-[6px] font-mono text-neutral-500">
-              <span>SCHEMAS INJECTED</span>
-              <span>GTM_ACTIVE // V2</span>
-            </div>
-          </div>
-        );
-
-      case 'analytics':
-      case 'saas':
-        return (
-          <div className="relative w-full h-full bg-[#030508] flex flex-col justify-between p-4 overflow-hidden text-left" id="mock-desktop-saas">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-28 h-28 bg-[#D6B16B]/5 rounded-full blur-2xl pointer-events-none" />
-            <div className="flex items-center justify-between border-b border-neutral-900 pb-1.5">
-              <span className="text-[7.5px] font-mono text-neutral-450 tracking-widest uppercase font-bold">FUNNEL ANALYTICS</span>
-              <span className="px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-400 text-[5.5px] font-mono font-bold animate-pulse">CAPI LIVE</span>
-            </div>
-            <div className="grid grid-cols-2 gap-3 my-auto items-center">
-              <div className="space-y-1">
-                <div className="text-[5.5px] font-mono text-neutral-500 uppercase tracking-widest">Ctr Conversion Boost</div>
-                <div className="font-sans text-[15px] font-black text-white leading-none">
-                  5.2x <span className="text-[7px] font-bold text-emerald-450 uppercase font-mono ml-1">Active</span>
-                </div>
-              </div>
-              <div className="flex items-end gap-[1.5px] h-8 justify-end">
-                <span className="w-1.5 h-2 bg-neutral-900 rounded-sm" />
-                <span className="w-1.5 h-4 bg-neutral-850 rounded-sm" />
-                <span className="w-1.5 h-3 bg-neutral-700 rounded-sm" />
-                <span className="w-1.5 h-6 bg-[#D6B16B]/40 rounded-sm animate-pulse" />
-                <span className="w-1.5 h-8 bg-[#D6B16B] rounded-sm" />
-              </div>
-            </div>
-            <div className="flex items-center justify-between pt-1.5 border-t border-neutral-900/60 text-[6px] font-mono text-neutral-500">
-              <span>PIXEL &amp; CLOUDFLARE LINKED</span>
-              <span>OK // V2</span>
-            </div>
-          </div>
-        );
-
-      case 'creative':
-      default:
-        return (
-          <div className="relative w-full h-full bg-[#030508] flex flex-col justify-between p-4 overflow-hidden text-left" id="mock-desktop-creative">
-            <div className="absolute inset-0 bg-gradient-to-tr from-[#D6B16B]/[0.02] to-transparent pointer-events-none" />
-            <div className="flex items-center justify-between border-b border-neutral-900 pb-1.5">
-              <span className="text-[7px] font-mono text-[#D6B16B] tracking-widest uppercase font-bold">WEAVERS LAB</span>
-              <span className="text-[6px] font-sans text-neutral-450 font-bold">AWWWARDS WINNER</span>
-            </div>
-            <div className="space-y-1 my-auto">
-              <span className="text-[5.5px] font-mono text-[#D6B16B] uppercase tracking-[0.25em] block animate-pulse">Sartorial Heritage</span>
-              <h4 className="font-serif text-[13px] font-normal italic text-white leading-none">
-                The Loom Portfolio
-              </h4>
-              <p className="font-sans text-[7.5px] text-neutral-400 leading-normal max-w-[200px]">
-                Immersive smooth-scroll showcase of legendary master weaver workshops.
-              </p>
-            </div>
-            <div className="flex items-center justify-between pt-1.5 border-t border-neutral-900/60 text-[6px] font-mono text-neutral-500">
-              <span>LENIS SMOOTH ACCEL</span>
-              <span>98 FPS SPEED</span>
-            </div>
-          </div>
-        );
-    }
-  };
 
   return (
     <section className="py-24 sm:py-32 relative" id="crafted-experiences">
@@ -384,7 +244,12 @@ export const CraftedExperiencesSection: React.FC<CraftedExperiencesProps> = ({
 
                       {/* Graphics Render with scale transition */}
                       <div className="w-full h-full scale-[0.98] origin-top transition-transform duration-700 group-hover:scale-100" id={`p-card-canvas-${project.id}`}>
-                        {renderMockupScreen(project.imageSvgType)}
+                        <img
+                          src={project.image}
+                          alt={project.title}
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-100"
+                          loading="lazy"
+                        />
                       </div>
 
                       {/* Floating Success metrics tag */}
