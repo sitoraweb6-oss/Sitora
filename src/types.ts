@@ -15,6 +15,7 @@ export interface CraftedExperience {
   shortDesc: string;
   description: string;
   imageSvgType: 'saas' | 'ecommerce' | 'corporate' | 'creative' | 'analytics';
+  image: string;
   liveUrl: string;
   tags: string[];
   metric: string;
