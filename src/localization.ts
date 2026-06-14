@@ -100,6 +100,8 @@ export const transDictionary: Record<string, Record<string, string>> = {
     "Analyze My Stage on WhatsApp": "Analyze My Stage on WhatsApp",
 
     // FAQ Section
+    "Verified Client Feedback": "Verified Client Feedback",
+    "Corporate Alliances": "Corporate Alliances",
     "Clear Strategic Answers": "Clear Strategic Answers",
     "Frequently Questions Asked": "Frequently Questions Asked",
     "Contact Details": "Contact Details",
@@ -133,7 +135,24 @@ export const transDictionary: Record<string, Record<string, string>> = {
     "Explore some of Sitora\'s live client portals, custom speed benchmarks, and high-conversions tracking setups deployed in the wilderness.": "Explore some of Sitora\'s live client portals, custom speed benchmarks, and high-conversions tracking setups deployed in the wilderness.",
     "Filter Portals": "Filter Portals",
     "All Case Studies": "All Case Studies",
-    "Live Portal Preview": "Live Portal Preview"
+    "Live Portal Preview": "Live Portal Preview",
+
+    // Founder Section keys
+    "THE MIND BEHIND SITORA": "THE MIND BEHIND SITORA",
+    "Built with strategy, not templates.": "Built with strategy, not templates.",
+    "Sitora was founded with a simple belief: businesses deserve digital experiences engineered for measurable growth, not generic solutions assembled from shortcuts.": "Sitora was founded with a simple belief: businesses deserve digital experiences engineered for measurable growth, not generic solutions assembled from shortcuts.",
+    "Meet the Founder": "Meet the Founder",
+    "Sayed Ahmad": "Sayed Ahmad",
+    "Founder & Digital Growth Strategist": "Founder & Digital Growth Strategist",
+    "I started Sitora to bridge the gap between beautiful design and business performance.": "I started Sitora to bridge the gap between beautiful design and business performance.",
+    "Too many businesses invest in websites and marketing systems that look impressive but fail to generate meaningful results.": "Too many businesses invest in websites and marketing systems that look impressive but fail to generate meaningful results.",
+    "Sitora exists to build digital ecosystems that combine aesthetics, speed, conversion psychology, and measurable growth. Every project is approached with long-term partnership in mind, ensuring that each client receives thoughtful execution rather than one-size-fits-all solutions.": "Sitora exists to build digital ecosystems that combine aesthetics, speed, conversion psychology, and measurable growth. Every project is approached with long-term partnership in mind, ensuring that each client receives thoughtful execution rather than one-size-fits-all solutions.",
+    "Technology should never exist just to impress people. It should create clarity, trust, and opportunities for businesses to grow.": "Technology should never exist just to impress people. It should create clarity, trust, and opportunities for businesses to grow.",
+    "Web Strategy": "Web Strategy",
+    "Growth Systems": "Growth Systems",
+    "Conversion Experience": "Conversion Experience",
+    "Analytics & Tracking": "Analytics & Tracking",
+    "Focused on building meaningful partnerships with businesses that value quality, transparency, and sustainable growth.": "Focused on building meaningful partnerships with businesses that value quality, transparency, and sustainable growth."
   },
   bn: {
     // Nav Navigation items
@@ -236,6 +255,8 @@ export const transDictionary: Record<string, Record<string, string>> = {
     "Analyze My Stage on WhatsApp": "হোয়াটসঅ্যাপের মাধ্যমে বিশ্লেষণ করুন",
 
     // FAQ Section
+    "Verified Client Feedback": "ভেরিফাইড কাস্টমার রিভিউ ও ফিডব্যাক",
+    "Corporate Alliances": "কর্পোরেট পার্টনারশিপ",
     "Clear Strategic Answers": "স্পষ্ট কৌশলগত উত্তর",
     "Frequently Questions Asked": "সচরাচর জিজ্ঞাসিত প্রশ্নাবলী (FAQ)",
     "Contact Details": "যোগাযোগের বিস্তারিত",
@@ -269,6 +290,23 @@ export const transDictionary: Record<string, Record<string, string>> = {
     "Explore some of Sitora\'s live client portals, custom speed benchmarks, and high-conversions tracking setups deployed in the wilderness.": "আমাদের তৈরি করা লাইভ ক্লায়েন্ট পোর্টাল, বিস্ময়কর স্পিড বেঞ্চমার্ক এবং কার্যকর ট্র্যাকিং সিস্টেমগুলোর বাস্তব ক্ষেত্রসমূহ দেখে নিন।",
     "Filter Portals": "পোর্টফোলিও ফিল্টার",
     "All Case Studies": "সব কেস স্টাডি",
-    "Live Portal Preview": "লাইভ পোর্টাল প্রিভিউ"
+    "Live Portal Preview": "লাইভ পোর্টাল প্রিভিউ",
+
+    // Founder Section keys
+    "THE MIND BEHIND SITORA": "সিতোরার পেছনের মূল মস্তিষ্ক",
+    "Built with strategy, not templates.": "টেমপ্লেট নয়, নির্মিত হয় স্ট্র্যাটেজি দিয়ে।",
+    "Sitora was founded with a simple belief: businesses deserve digital experiences engineered for measurable growth, not generic solutions assembled from shortcuts.": "সিতোরার প্রতিষ্ঠা হয়েছিল একটি সহজ বিশ্বাস থেকে: প্রতিটি ব্যবসার প্রয়োজন পরিমাপযোগ্য প্রবৃদ্ধি অর্জনের জন্য তৈরি ডিজিটাল অভিজ্ঞতা, শর্টকাট দিয়ে তৈরি কোনো সাধারণ সমাধান নয়।",
+    "Meet the Founder": "প্রতিষ্ঠাতার সাথে পরিচিত হোন",
+    "Sayed Ahmad": "সাঈদ আহমদ",
+    "Founder & Digital Growth Strategist": "প্রতিষ্ঠাতা ও ডিজিটাল গ্রোথ স্ট্র্যাটেজিস্ট",
+    "I started Sitora to bridge the gap between beautiful design and business performance.": "ডিজাইন ও বিজনেসের প্রকৃত লাভ ও কার্যকারিতার সমন্বয় ঘটাতে আমি সিতোরা শুরু করেছিলাম।",
+    "Too many businesses invest in websites and marketing systems that look impressive but fail to generate meaningful results.": "অনেক ব্যবসাই এমন চমৎকার দেখতে ওয়েবসাইট ও মার্কেটিং সিস্টেমে বিনিয়োগ করে যা দিনশেষে কোনো বাস্তব ফল আনতে পারে না।",
+    "Sitora exists to build digital ecosystems that combine aesthetics, speed, conversion psychology, and measurable growth. Every project is approached with long-term partnership in mind, ensuring that each client receives thoughtful execution rather than one-size-fits-all solutions.": "নান্দনিকতা, গতি, কনভার্সন সাইকোলজি এবং পরিমাপযোগ্য প্রবৃদ্ধির সমন্বয়ে কাস্টম ডিজিটাল ইকোসিস্টেম তৈরি করাই সিতোরার প্রধান লক্ষ্য। প্রতিটি প্রজেক্টকে আমরা দীর্ঘমেয়াদী অংশীদারিত্বের কথা মাথায় রেখে কাজ করি, যা ক্লায়েন্টদের জন্য মানসম্মত সমাধান নিশ্চিত করে।",
+    "Technology should never exist just to impress people. It should create clarity, trust, and opportunities for businesses to grow.": "প্রযুক্তি কেবল মানুষকে প্রভাবিত করার জন্য থাকা উচিত নয়; এটি ব্যবসায়িক স্বচ্ছতা, বিশ্বাস এবং প্রবৃদ্ধির পথ সুগম করার চমৎকার মাধ্যম।",
+    "Web Strategy": "ওয়েব স্ট্র্যাটেজি",
+    "Growth Systems": "গ্রোথ সিস্টেমস",
+    "Conversion Experience": "কনভার্সন এক্সপেরিয়েন্স",
+    "Analytics & Tracking": "অ্যানালিটিক্স ও ট্র্যাকিং",
+    "Focused on building meaningful partnerships with businesses that value quality, transparency, and sustainable growth.": "গুণগত মান, স্বচ্ছতা এবং দীর্ঘমেয়াদী টেকসই প্রবৃদ্ধিকে মূল্যায়ন করা ব্যবসাগুলোর সাথে অর্থপূর্ণ অংশীদারিত্ব গড়ে তোলার লক্ষ্য।"
   }
 };

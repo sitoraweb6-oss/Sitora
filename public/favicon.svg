@@ -20,18 +20,18 @@
     </filter>
   </defs>
 
-  <rect width="100%" height="100%" fill="#05070A" rx="24" />
+  <!-- Dark Rounded Luxury Background for Favicon Grid -->
+  <rect width="100%" height="100%" fill="#05070A" rx="100" />
 
   <!-- Outer Astral Orbit Rings -->
-  <circle cx="250" cy="230" r="160" fill="none" stroke="url(#sapphireGrad)" stroke-width="1" stroke-dasharray="8,8" opacity="0.3" />
-  <circle cx="250" cy="230" r="130" fill="none" stroke="url(#goldGrad)" stroke-width="1.5" opacity="0.4" />
-  <circle cx="250" cy="230" r="130" fill="none" stroke="url(#goldGrad)" stroke-width="4" stroke-dasharray="40,200" opacity="0.8" />
+  <circle cx="250" cy="250" r="190" fill="none" stroke="url(#sapphireGrad)" stroke-width="2" stroke-dasharray="10,10" opacity="0.4" />
+  <circle cx="250" cy="250" r="160" fill="none" stroke="url(#goldGrad)" stroke-width="3" stroke-dasharray="60,200" opacity="0.9" />
 
   <!-- Core Geometric Mandala Base (Awwwards Style) -->
-  <g filter="url(#softGlow)">
+  <g filter="url(#softGlow)" transform="translate(0, 20)">
     <!-- Rotating Diamond Star Frame -->
-    <polygon points="250,90 370,230 250,370 130,230" fill="none" stroke="url(#goldGrad)" stroke-width="2" opacity="0.8" />
-    <polygon points="250,110 350,230 250,350 150,230" fill="none" stroke="url(#sapphireGrad)" stroke-width="1" opacity="0.5" />
+    <polygon points="250,90 370,230 250,370 130,230" fill="none" stroke="url(#goldGrad)" stroke-width="4" opacity="0.95" />
+    <polygon points="250,110 350,230 250,350 150,230" fill="none" stroke="url(#sapphireGrad)" stroke-width="2.5" opacity="0.75" />
     
     <!-- Central Modern Stylized "S" Emblem -->
     <path d="M 220 180 
@@ -40,34 +40,11 @@
              C 220 280, 280 280, 280 250" 
           fill="none" 
           stroke="url(#goldGrad)" 
-          stroke-width="18" 
+          stroke-width="22" 
           stroke-linecap="round" 
           stroke-linejoin="round" />
           
     <!-- Decorative Center Dots -->
-    <circle cx="250" cy="230" r="5" fill="#FFFFFF" />
+    <circle cx="250" cy="230" r="6" fill="#FFFFFF" />
   </g>
-
-  <!-- Typography: S I T O R A -->
-  <text x="250" y="425" 
-        font-family="system-ui, -apple-system, sans-serif" 
-        font-size="28" 
-        font-weight="900" 
-        letter-spacing="0.45em" 
-        fill="#FFFFFF" 
-        text-anchor="middle">
-    SITORA
-  </text>
-  
-  <!-- Sub-label -->
-  <text x="250" y="450" 
-        font-family="system-ui, -apple-system, sans-serif" 
-        font-size="11" 
-        font-weight="500" 
-        letter-spacing="0.7em" 
-        fill="url(#goldGrad)" 
-        text-anchor="middle"
-        opacity="0.9">
-    WEB SOLUTIONS
-  </text>
 </svg>

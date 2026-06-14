@@ -38,6 +38,10 @@ export interface CategoryContent {
   capabilitiesEn: string[];
   capabilitiesBn: string[];
   subServices: SubServiceContent[];
+  badge?: {
+    en: string;
+    bn: string;
+  };
 }
 
 export const CATEGORIES_DATA: CategoryContent[] = [
@@ -143,6 +147,39 @@ export const CATEGORIES_DATA: CategoryContent[] = [
         timelineBn: '১–২ সপ্তাহ',
         trustStatementEn: 'Bypasses bloated themes for sub-second performance.',
         trustStatementBn: 'কোনো ভারী টেমপ্লেট ছাড়াই সাইট ফাস্ট রাখার চমৎকার মেথড।'
+      },
+      {
+        id: 'domain-hosting-launch',
+        titleEn: 'Domain, Hosting & Launch Setup',
+        titleBn: 'ডোমেন, হোস্টিং ও লঞ্চ সেটআপ',
+        descEn: 'Secure the perfect digital foundation for your business through domain registration guidance, hosting setup, deployment support, SSL configuration, and launch assistance.',
+        descBn: 'ডোমেইন রেজিস্ট্রেশন, হোস্টিং কনফিগারেশন, এসএসএল সার্টিফিকেট সেটআপ এবং সম্পূর্ণ লঞ্চ সাপোর্টের মাধ্যমে আপনার ব্যবসার জন্য চমৎকার ডিজিটাল ফাউন্ডেশন তৈরি করুন।',
+        capabilitiesEn: [
+          'Domain Registration Assistance',
+          'Domain Transfer Support',
+          'Hosting Setup',
+          'DNS Configuration',
+          'SSL Configuration',
+          'Business Email Setup',
+          'Deployment Assistance',
+          'Launch Support'
+        ],
+        capabilitiesBn: [
+          'ডোমেইন রেজিস্ট্রেশন অ্যাসিস্ট্যান্স',
+          'ডোমেইন ট্রান্সফার সাপোর্ট',
+          'হোস্টিং সেটআপ কনফিগারেশন',
+          'ডিএনএস কনফিগারেশন',
+          'এসএসএল সিকিউরিটি সেটআপ',
+          'প্রফেশনাল বিজনেস ইমেইল',
+          'ডিপ্লয়মেন্ট অ্যাসিস্ট্যান্স',
+          'রিলিজ ও লঞ্চ সাপোর্ট'
+        ],
+        bestForEn: 'Businesses looking for expert launch enablement and a secure deployment foundation.',
+        bestForBn: 'যেসব ব্যবসা একদম নিরাপদ ও সঠিক নিয়মে নিজেদের ডোমেইন, হোস্টিং এবং ইমেল কনফিগার করে লঞ্চ হতে চান।',
+        timelineEn: 'Same Day – 2 Days',
+        timelineBn: '১–২ দিন',
+        trustStatementEn: 'Launch readiness with maximum security configurations.',
+        trustStatementBn: 'সর্বোচ্চ সিকিউরিটি কনফিগারেশনসহ পূর্ণাঙ্গ ডিজিটাল লঞ্চ।'
       }
     ]
   },
@@ -638,6 +675,177 @@ export const CATEGORIES_DATA: CategoryContent[] = [
         timelineBn: '৩–৫ দিন',
         trustStatementEn: 'Ensures pristine corporate syntax matches.',
         trustStatementBn: 'সহজে পড়ার উপযোগী চমৎকার রিডেবল কন্টেন্ট লেআউট।'
+      },
+      {
+        id: 'aeo-search-opt',
+        titleEn: 'AEO (AI Search Optimization)',
+        titleBn: 'এআই সার্চ অপ্টিমাইজেশন (AEO)',
+        descEn: 'Help businesses become discoverable in AI-powered search experiences including ChatGPT, Gemini, Perplexity, and emerging answer engines.',
+        descBn: 'ChatGPT, Gemini, Perplexity এবং উদীয়মান এআই সার্চ ইঞ্জিনে আপনার ব্যবসাকে খুঁজে পাওয়ার উপযোগী ডায়নামিক অপ্টিমাইজেশন।',
+        capabilitiesEn: [
+          'AI Search Visibility Optimization',
+          'Structured Data Enhancement',
+          'Entity Optimization',
+          'Knowledge Graph Alignment',
+          'Conversational Search Strategy',
+          'Future Search Readiness'
+        ],
+        capabilitiesBn: [
+          'এআই সার্চ ভিজিবিলিটি অপ্টিমাইজেশন',
+          'স্ট্রাকচার্ড ডাটা এনহান্সমেন্ট',
+          'এন্টিটি অপ্টিমাইজেশন',
+          'নলেজ গ্রাফ অ্যালাইনমেন্ট',
+          'কনভার্সেশনাল সার্চ স্ট্র্যাটেজি',
+          'ফিউচার সার্চ রেডিনেস'
+        ],
+        bestForEn: 'Forward-thinking brands looking to remain discoverable as consumers switch to AI-driven answers.',
+        bestForBn: 'ভোক্তারা যখন এআই-ভিত্তিক উত্তরের দিকে ঝুঁকছেন, তখন দৃশ্যমানতা বজায় রাখতে চাওয়া ব্র্যান্ডসমূহ।',
+        timelineEn: '5–10 Days',
+        timelineBn: '৫–১০ দিন',
+        trustStatementEn: 'Future-proof visibility on emerging answer engines.',
+        trustStatementBn: 'উদীয়মান এআই উত্তর ইঞ্জিনে ভবিষ্যত-নিরাপদ দৃশ্যমানতা।'
+      }
+    ]
+  },
+  {
+    id: 'aeo-visibility',
+    labelEn: 'AEO (AI Visibility)',
+    labelBn: 'এআই ভিজিবিলিটি (AEO)',
+    headingEn: 'AEO (Answer Engine Optimization)',
+    headingBn: 'অ্যানসার ইঞ্জিন অপ্টিমাইজেশন',
+    descEn: 'Modern customers increasingly discover businesses through AI-powered experiences such as ChatGPT, Gemini, Perplexity, and emerging answer engines. AEO helps your business become discoverable, trusted, and recommended in the next generation of search.',
+    descBn: 'আধুনিক গ্রাহকরা ক্রমবর্ধমানভাবে চ্যাটজিপিটি, জেমিনি, পারপ্লেক্সিটির মতো এআই-চালিত অভিজ্ঞতার মাধ্যমে ব্যবসা খুঁজে পাচ্ছেন। এআই ভিজিবিলিটি আপনার ব্যবসাকে পরবর্তী প্রজন্মের অনুসন্ধানে আবিষ্কারযোগ্য এবং বিশ্বস্ত করতে সাহায্য করে।',
+    iconName: 'Sparkles',
+    bestForEn: 'Forward-thinking businesses, authority brands, service providers, and businesses investing in long-term visibility.',
+    bestForBn: 'ভবিষ্যত-মুখী দূরদর্শী প্রতিষ্ঠান, প্রফেশনাল সার্ভিস প্রোভাইডার, অথরিটি ব্র্যান্ড এবং বাজারে শুরুর আধিপত্য গড়তে ইচ্ছুক সংস্থাসমূহ।',
+    timelineEn: '5–10 Days',
+    timelineBn: '৫–১০ দিন',
+    trustStatementEn: 'Prepare your business for where search is heading, not where it has been.',
+    trustStatementBn: 'অনুসন্ধান যেখানে যাচ্ছে তার জন্য আপনার ব্যবসাকে প্রস্তুত করুন, যেখানে এটি ছিল তার জন্য নয়।',
+    capabilitiesEn: [
+      'AI Engine Indexing Alignment',
+      'Structured Schema Upgrades',
+      'High-authority Entity Mapping',
+      'Conversational Query Matching'
+    ],
+    capabilitiesBn: [
+      'এআই ক্রলার ও ইনডেক্সিং টিউনিং',
+      'উচ্চ মানের স্ট্রাকচার্ড স্কিমা',
+      'সিমেন্টিক এন্টিটি লিঙ্কিং',
+      'কনভার্সেশনাল কুয়েরি পজিশনিং'
+    ],
+    badge: {
+      en: 'NEW • AI READY',
+      bn: 'নতুন • এআই রেডি'
+    },
+    subServices: [
+      {
+        id: 'aeo-search-visibility',
+        titleEn: 'AI Discovery & Generative Search (ChatGPT, Claude & Perplexity)',
+        titleBn: 'চ্যাটজিপিটি, ক্লড ও পারপ্লেক্সিটি ডিসকভারেবিলিটি',
+        descEn: 'Optimize your digital footprint and configure public datasets to ensure generative AI chatbots like ChatGPT, Claude, and Perplexity recognize and recommend your business as the authoritative answer.',
+        descBn: 'জেনারেশনাল চ্যাটবট এবং ক্রলার যেমন ChatGPT, Claude, ও Perplexity যাতে আপনার ব্যবসাকে বিশ্বস্ত উত্তরদাতা হিসেবে সবার আগে রিকমেন্ড এবং রেফার করে তা নিশ্চিত করা।',
+        capabilitiesEn: [
+          'OpenAI Crawler Alignment',
+          'Perplexity Index Matching',
+          'Generative Trust Indexing',
+          'Citation Hooking',
+          'Brand Entity Association'
+        ],
+        capabilitiesBn: [
+          'ওপেনএআই ক্রলার অ্যালাইনমেন্ট',
+          'পারপ্লেক্সিটি ইনডেক্স ম্যাচিং',
+          'জেনারেটিভ ট্রাস্ট ইনডেক্সিং',
+          'সাইটেশন হুকিং',
+          'ব্র্যান্ড এন্টিটি অ্যাসোসিয়েশন'
+        ],
+        bestForEn: 'Brands wanting consistent mentions and high-authority citations within OpenAI and Perplexity answer systems.',
+        bestForBn: 'যেসব ব্র্যান্ড জেনারেটিভ উত্তরে নিয়মিত নিজেদের নাম ও কোটেশন দেখতে ভালোবাসে এবং চ্যাটবটে রিকমেন্ডেশন চায়।',
+        timelineEn: '5–7 Days',
+        timelineBn: '৫–৭ দিন',
+        trustStatementEn: 'Direct integration with modern chatbot discovery standards.',
+        trustStatementBn: 'আধুনিক চ্যাটবট ডিসকভারি স্ট্যান্ডার্ডের সাথে ডাইরেক্ট ইন্টিগ্রেশন।'
+      },
+      {
+        id: 'google-ai-overviews',
+        titleEn: 'Google AI Overviews & Gemini Readiness',
+        titleBn: 'গুগল এআই ওভারভিউস ও জেমিনি অপ্টিমাইজেশন',
+        descEn: 'Format pages, structured schemas, and brand citations specifically to be prioritized and highlighted as trusted source references inside Google Overview, SGE, and Gemini responses.',
+        descBn: 'গুগল এআই ওভারভিউস এবং জেমিনির সার্চ রেজাল্ট ফিডে আপনার পেজ বা কন্টেন্টকে সোর্স রেফারেন্স হিসেবে অগ্রাধিকার দেওয়ার জন্য অ্যাডভান্সড টিউনিং।',
+        capabilitiesEn: [
+          'Google Overview Snippet Targets',
+          'Gemini Knowledge Graph Linkage',
+          'Semantic Density Optimization',
+          'Google Business Profile Integration',
+          'SGE Answer Positioning'
+        ],
+        capabilitiesBn: [
+          'গুগল ওভারভিউ স্নিপেট স্ন্যাপস',
+          'জেমিনি নলেজ গ্রাফ লিঙ্কেজ',
+          'সিমেন্টিক ডেনসিটি অপ্টিমাইজেশন',
+          'গুগল বিজনেস প্রোফাইল সিনক্রোনাইজেশন',
+          'এসজিই উত্তর পজিশনিং'
+        ],
+        bestForEn: 'Businesses and publishers seeking premium visibility on next-generation Google search and Workspace tools.',
+        bestForBn: 'গুগল এআই এবং জেমিনি ইকোসিস্টেম ডমিন্যান্সের মাধ্যমে ফ্রন্টলাইন ট্রাফিক অর্জন করতে ইচ্ছুক সংস্থা।',
+        timelineEn: '4–6 Days',
+        timelineBn: '৪–৬ দিন',
+        trustStatementEn: 'Tailored for absolute Google AI ecosystem dominance.',
+        trustStatementBn: 'গুগল এআই ইকোসিস্টেমে সর্বোচ্চ প্রাধান্য পাওয়ার উপযোগী মেথড।'
+      },
+      {
+        id: 'entity-optimization',
+        titleEn: 'Semantic Web, Schema & Entity Optimization',
+        titleBn: 'সিমেন্টিক ওয়েব, স্কিমা ও এন্টিটি পজিশনিং',
+        descEn: 'Establish your brand as an unmistakable entity inside global knowledge bases using advanced nested JSON-LD schemas and Wikidata anchoring to eliminate AI hallucinations.',
+        descBn: 'উন্নত কাস্টম JSON-LD ইনজেক্টর, স্কিমা হায়ারার্কি এবং উইকিডেটা অ্যাঙ্করিংয়ের মাধ্যমে ওয়েবের এন্টিটি মানচিত্রে আপনার ব্র্যান্ডের সর্বোচ্চ সত্যতা প্রতিষ্ঠা করা।',
+        capabilitiesEn: [
+          'Nested JSON-LD Schema Injectors',
+          'SameAs Link Auditing',
+          'Wikidata Registration',
+          'Entity Definition Coding',
+          'Google Knowledge Graph Sourcing'
+        ],
+        capabilitiesBn: [
+          'নেস্টেড JSON-LD স্কিমা ইনজেক্টর',
+          'SameAs লিঙ্ক অডিটিং',
+          'উইকিডেটা রেজিস্ট্রেশন',
+          'এন্টিটি ডেফিনিশন কোডিং',
+          'গুগল নলেজ গ্রাফ সোর্সিং'
+        ],
+        bestForEn: 'Established brands protecting their identity and facts from generative AI hallucination and informational blurring.',
+        bestForBn: 'সার্চ বট ও এআই-এর ভুল তথ্য প্রদান (Hallucination) থেকে নিজেদের ব্র্যান্ডের নিখুঁত অথরিটি বজায় রাখতে ইচ্ছুক ব্র্যান্ড।',
+        timelineEn: '4–8 Days',
+        timelineBn: '৪–৮ দিন',
+        trustStatementEn: 'Hardcodes your identity into public machine-readable records.',
+        trustStatementBn: 'মেশিন-রিডেবল পাবলিক রেকর্ডের সাথে স্থায়ী ডাটা লিঙ্কেজ।'
+      },
+      {
+        id: 'conversational-search',
+        titleEn: 'Conversational Search & Future Readiness',
+        titleBn: 'কনভার্সেশনাল সার্চ ও ফিউচার সার্চ রেডিনেস',
+        descEn: 'Continuous share-of-voice audits, voice-search adaptive Q&A copy structures, and structured FAQ arrays to capture natural dialog queries and emerging answer engine shifts.',
+        descBn: 'ক্রেতাদের সাধারণ মুখে বলা কথার প্রশ্নের উত্তর দিতে কনভার্সেশনাল টার্গেট হুক এবং প্রতিনিয়ত নতুন সার্চ ইঞ্জিনের ড্রিফট অ্যালার্টের মাধ্যমে ফিউচার-প্রুফ ব্র্যান্ড সিকিউরিটি।',
+        capabilitiesEn: [
+          'Voice Search Q&A Optimization',
+          'Share-of-Voice Tracking',
+          'Conversational Drift Alerts',
+          'Zero-click Snippet Dominance',
+          'Answer Engine Threat Profiling'
+        ],
+        capabilitiesBn: [
+          'ভয়েস সার্চ প্রশ্নোত্তর অপ্টিমাইজ',
+          'শেয়ার-অব-ভয়েস ট্র্যাকিং',
+          'কনভার্সেশনাল ড্রিফট অ্যালার্ট',
+          'জিরো-ক্লিক স্নিপেট ডমিন্যান্স',
+          'সার্চ ইঞ্জিন থ্রেট প্রোফাইলিং'
+        ],
+        bestForEn: 'Forward-thinking companies playing a long-term branding game and local service utilities capitalizing on voice search.',
+        bestForBn: 'দীর্ঘমেয়াদী ব্র্যান্ডিং লিডারশিপ প্র্যাকটিস এবং লোকাল কাস্টমারদের ভয়েস সার্চ কুয়েরি ইন্টারেক্ট করার জন্য।',
+        timelineEn: '5–10 Days',
+        timelineBn: '৫–১০ দিন',
+        trustStatementEn: 'Continuous monitoring of conversational engine shifts.',
+        trustStatementBn: 'নতুন নতুন সার্চ মেকানিজম বা প্রযুক্তির সাথে আপ-টু-ডেট ভিজিবিলিটি।'
       }
     ]
   },

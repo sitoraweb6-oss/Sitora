@@ -50,6 +50,7 @@ export interface Testimonial {
   rating: number;
   avatarBlurHash: string;
   avatarInitials: string;
+  source?: string;
 }
 
 export interface Article {

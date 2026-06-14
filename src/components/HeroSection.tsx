@@ -240,6 +240,37 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenInquiry, darkMod
               <ChevronRight size={14} className="transition-transform duration-150 group-hover:translate-x-0.5" />
             </button>
           </motion.div>
+
+          {/* Secondary, completely non-competing anchor link to the Founder Spotlight */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.48 }}
+            className="flex items-center gap-2.5 pt-1.5 self-start"
+            id="hero-founder-anchor-block"
+          >
+            <span className="flex h-1.5 w-1.5 relative">
+              <span className="absolute inline-flex h-full w-full rounded-full bg-[#D6B16B]/50 animate-ping"></span>
+              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#D6B16B]/80"></span>
+            </span>
+            <button
+              onClick={() => {
+                const target = document.getElementById('founder');
+                if (target) {
+                  target.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+              className={`group/founder font-mono text-[10px] uppercase tracking-widest font-bold cursor-pointer flex items-center gap-1.5 transition-all duration-300 ${
+                darkMode ? 'text-neutral-300 hover:text-[#D6B16B]' : 'text-neutral-700 hover:text-[#D6B16B]'
+              }`}
+              id="hero-founder-smooth-scroll"
+            >
+              <span className="underline underline-offset-4 decoration-[#D6B16B]/20 group-hover/founder:decoration-[#D6B16B]/70 transition-colors duration-300">
+                {t('Meet the Founder')}
+              </span>
+              <span className="transition-transform duration-300 group-hover/founder:translate-x-0.5" aria-hidden="true">→</span>
+            </button>
+          </motion.div>
         </div>
 
         {/* Right Side: Dense, Premium Floating Operational Dashboard Cards */}

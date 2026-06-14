@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { Quote, Star, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Quote, Star, ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
 import { TESTIMONIALS_DATA } from '../data';
+import { useLanguage } from '../LanguageContext';
 
 interface TestimonialsSectionProps {
   darkMode: boolean;
@@ -9,6 +10,7 @@ interface TestimonialsSectionProps {
 
 export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({ darkMode }) => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const { language, t } = useLanguage();
 
   const nextTestimonial = () => {
     setActiveIndex((prev) => (prev + 1) % TESTIMONIALS_DATA.length);
@@ -30,12 +32,12 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({ darkMo
         {/* Header Block */}
         <div className="mb-12 sm:mb-16" id="testimonials-header">
           <span className="text-[10px] font-mono text-[#FF8A00] uppercase tracking-[0.25em] block mb-3">
-            Corporate Alliances
+            {t('Corporate Alliances')}
           </span>
           <h2 className={`font-sans text-3xl sm:text-4xl font-black tracking-tight ${
             darkMode ? 'text-white' : 'text-neutral-950'
           }`} id="testimonials-title">
-            Client Voices & Experiences
+            {t('Verified Client Feedback')}
           </h2>
         </div>
 
@@ -86,7 +88,7 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({ darkMo
                   {current.author}
                 </h4>
                 <p className="text-[10px] text-neutral-500 font-mono mt-0.5 uppercase tracking-wider">
-                  {current.role} • {current.company}
+                  {current.role} • {current.company} {current.source && `• ${current.source}`}
                 </p>
               </div>
             </div>
@@ -124,6 +126,45 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({ darkMo
             >
               <ChevronRight size={16} />
             </button>
+          </div>
+
+          {/* Verified External Review Badges */}
+          <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 text-xs font-mono" id="testimonials-sources-panel">
+            <span className={darkMode ? 'text-neutral-500' : 'text-neutral-500'}>
+              {language === 'bn' ? 'রিভিউ ভেরিফাই করুন:' : 'Verify Official Reviews:'}
+            </span>
+            <div className="flex flex-wrap items-center justify-center gap-2.5">
+              <a
+                href="https://share.google/7e6lLr5R7aOMxmBSS"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`flex items-center gap-2 px-4 py-2 text-[10px] font-sans font-bold uppercase tracking-wider rounded-full cursor-pointer transition-all duration-300 border ${
+                  darkMode
+                    ? 'border-neutral-900 bg-neutral-950 hover:border-[#FF4E00]/45 text-neutral-400 hover:text-white'
+                    : 'border-neutral-200 bg-white hover:border-[#FF4E00]/45 text-neutral-600 hover:text-black shadow-sm'
+                }`}
+                id="google-reviews-source-link"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                <span>Google Maps</span>
+                <ExternalLink size={10} className="opacity-60" />
+              </a>
+              <a
+                href="https://www.facebook.com/sitoraweb/reviews/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`flex items-center gap-2 px-4 py-2 text-[10px] font-sans font-bold uppercase tracking-wider rounded-full cursor-pointer transition-all duration-300 border ${
+                  darkMode
+                    ? 'border-neutral-900 bg-neutral-950 hover:border-[#FF4E00]/45 text-neutral-400 hover:text-white'
+                    : 'border-neutral-200 bg-white hover:border-[#FF4E00]/45 text-neutral-600 hover:text-black shadow-sm'
+                }`}
+                id="facebook-reviews-source-link"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                <span>Facebook Pages</span>
+                <ExternalLink size={10} className="opacity-60" />
+              </a>
+            </div>
           </div>
 
         </div>

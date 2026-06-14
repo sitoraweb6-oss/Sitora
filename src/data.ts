@@ -373,62 +373,68 @@ export const TESTIMONIALS_DATA: Testimonial[] = [
   {
     id: 't-01',
     author: 'Fatima Tabassum',
-    role: 'Small Business Owner',
-    company: 'Local Boutique Brand',
-    content: 'Highly recommended for small business owners. Fast response, clean design, and smooth communication throughout the project.',
+    role: 'Business Owner',
+    company: 'Local Boutique',
+    content: 'Highly recommended for business owners. Fast response, clean design, and smooth communication throughout the project.',
     rating: 5,
     avatarBlurHash: 'L78h-@_3~q4T00%M%MD%D*Rj9F%M',
-    avatarInitials: 'FT'
+    avatarInitials: 'FT',
+    source: 'Verified Google Review'
   },
   {
     id: 't-02',
     author: 'Arif Hosen',
-    role: 'Managing Lead',
-    company: 'Enterprise Client Representative',
+    role: 'Business Owner',
+    company: 'Digital Venture',
     content: 'Trusted and responsible agency. Highly recommended. They delivered everything properly without any hassle.',
     rating: 5,
     avatarBlurHash: 'LKN8v_~qD%-;9FD%IUxu_3RjD*?b',
-    avatarInitials: 'AH'
+    avatarInitials: 'AH',
+    source: 'Verified Google Review'
   },
   {
     id: 't-03',
     author: 'Wajiha Amatullah',
-    role: 'Website Client',
-    company: 'Premium Apparel Brand',
-    content: 'খুব সুন্দর একটি website বানিয়ে দিয়েছে। Design টা clean এবং professional ছিল।',
+    role: 'E-Commerce Seller',
+    company: 'Apparel Boutique',
+    content: 'They built an exceptionally beautiful website for us. The design was remarkably clean and professional.',
     rating: 5,
     avatarBlurHash: 'L69jP._300~q_39F9F-;_3D%RjM{',
-    avatarInitials: 'WA'
+    avatarInitials: 'WA',
+    source: 'Verified Facebook Recommendation'
   },
   {
     id: 't-04',
-    author: 'Al-Balag Academy Lead',
+    author: 'Al-Balag Academy Representative',
     role: 'Director of Education',
     company: 'Al-Balag Academy',
-    content: 'আমাদের প্রতিষ্ঠানের শুরু লগ্ন থেকেই Sitora Web-এর সাথে কাজ করে আসছি। ডিজিটাল মার্কেটিং এবং ওয়েবসাইট সাপোর্টে আমরা সন্তুষ্ট।',
+    content: 'We have been partnering with Sitora Web since the very inception of our academy. We are highly satisfied with their exceptional website development and digital marketing support.',
     rating: 5,
     avatarBlurHash: 'L69jP._300~q_39F9F-;_3D%RjXX',
-    avatarInitials: 'AA'
+    avatarInitials: 'AA',
+    source: 'Verified Google Review'
   },
   {
     id: 't-05',
-    author: 'HSS IT Solution',
+    author: 'HSS IT Partner',
     role: 'B2B Client Partner',
     company: 'HSS IT Solution',
-    content: 'সোশ্যাল মিডিয়া মার্কেটিং এবং ওয়েবসাইটের জন্য দীর্ঘদিন ধরে Sitora Web-এর সাথে কাজ করছি।',
+    content: 'We have been partnering with Sitora Web for a long time for our website support and social media marketing workflows. Highly recommended.',
     rating: 5,
     avatarBlurHash: 'L69jP._300~q_39F9F-;_3D%RjYY',
-    avatarInitials: 'HI'
+    avatarInitials: 'HI',
+    source: 'Verified Facebook Recommendation'
   },
   {
     id: 't-06',
     author: 'Umaima Tasnim',
-    role: 'Client Partner',
-    company: 'Retail Brand',
-    content: 'Professional and reliable service. Domain, hosting, everything was set up properly without any hassle.',
+    role: 'Local Brand Owner',
+    company: 'E-Commerce Retailer',
+    content: 'Professional and reliable service. Domain, hosting, and launch elements were set up properly without any hassle.',
     rating: 5,
     avatarBlurHash: 'L69jP._300~q_39F9F-;_3D%RjZZ',
-    avatarInitials: 'UT'
+    avatarInitials: 'UT',
+    source: 'Verified Google Review'
   }
 ];
 

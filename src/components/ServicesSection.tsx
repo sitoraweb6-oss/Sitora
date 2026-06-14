@@ -73,6 +73,8 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenInquiry,
       case 'Fingerprint': return <Fingerprint className={className} size={28} strokeWidth={1.5} id="icon-fingerprint-svg" />;
       case 'Palette': return <Palette className={className} size={28} strokeWidth={1.5} id="icon-palette-svg" />;
       case 'Handshake': return <Handshake className={className} size={28} strokeWidth={1.5} id="icon-handshake-svg" />;
+      case 'Sparkles': return <Sparkles className={className} size={28} strokeWidth={1.5} id="icon-sparkles-svg" />;
+      case 'Zap': return <Zap className={className} size={28} strokeWidth={1.5} id="icon-zap-svg" />;
       default: return <Globe className={className} size={28} strokeWidth={1.5} id="icon-default-svg" />;
     }
   };
@@ -167,6 +169,15 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenInquiry,
                 >
                   <span className="shrink-0 scale-75">{renderIcon(category.iconName, isActive ? 'text-neutral-950' : 'text-[#D6B16B]')}</span>
                   <span>{categoryLabel}</span>
+                  {category.badge && (
+                    <span className={`px-1.5 py-0.5 rounded text-[7px] font-sans font-black tracking-wide uppercase max-h-[16px] flex items-center leading-none scale-90 ${
+                      isActive 
+                        ? 'bg-neutral-950/20 text-neutral-950 border border-neutral-950/10' 
+                        : 'bg-[#D6B16B]/20 text-[#D6B16B] border border-[#D6B16B]/30'
+                    }`}>
+                      {isEn ? category.badge.en : category.badge.bn}
+                    </span>
+                  )}
                 </button>
               );
             })}
@@ -321,11 +332,9 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenInquiry,
                       key={sub.id}
                       onClick={() => {
                         setSelectedSubService(sub);
-                        if (typeof window !== 'undefined' && window.innerWidth < 1024) {
-                          const featuredPanel = document.getElementById('services-featured-panel');
-                          if (featuredPanel) {
-                            featuredPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                          }
+                        const featuredPanel = document.getElementById('services-featured-panel');
+                        if (featuredPanel) {
+                          featuredPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
                         }
                       }}
                       className={`group relative p-5 rounded-xl border cursor-pointer transition-all duration-400 select-none min-h-[180px] flex flex-col justify-between overflow-hidden ${

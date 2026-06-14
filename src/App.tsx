@@ -24,6 +24,7 @@ import { InquiryForm, FloatingWhatsApp } from './components/InquiryForm';
 
 // Lazy-loaded sub-modules for extreme FCP/LCP and minimum main-thread work
 const TestimonialsSection = React.lazy(() => import('./components/TestimonialsSection').then(m => ({ default: m.TestimonialsSection })));
+const FounderSection = React.lazy(() => import('./components/FounderSection').then(m => ({ default: m.FounderSection })));
 const FAQSection = React.lazy(() => import('./components/FAQSection').then(m => ({ default: m.FAQSection })));
 const BlogPage = React.lazy(() => import('./components/BlogPage').then(m => ({ default: m.BlogPage })));
 const PortfolioPage = React.lazy(() => import('./components/PortfolioPage').then(m => ({ default: m.PortfolioPage })));
@@ -706,6 +707,13 @@ export default function App() {
                     {/* Client stories trust testimonials */}
                     <Suspense fallback={<div className="min-h-[440px] w-full border border-dashed border-neutral-900/10 dark:border-neutral-800/10 rounded-3xl" />}>
                       <TestimonialsSection 
+                        darkMode={darkMode} 
+                      />
+                    </Suspense>
+                    
+                    {/* Founder Spotlight section */}
+                    <Suspense fallback={<div className="min-h-[440px] w-full border border-dashed border-neutral-900/10 dark:border-neutral-800/10 rounded-3xl" />}>
+                      <FounderSection 
                         darkMode={darkMode} 
                       />
                     </Suspense>

@@ -15,7 +15,7 @@ export const SitoraIcon: React.FC<{ size?: number; className?: string; isLight?:
 }) => {
   return (
     <img
-      src="/images/logo.svg"
+      src="/images/logo (1).svg"
       alt="Sitora Web Logo"
       width={size}
       height={size}
