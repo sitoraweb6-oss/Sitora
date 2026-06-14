@@ -73,7 +73,7 @@ export const FounderSection: React.FC<FounderSectionProps> = ({ darkMode }) => {
                 </div>
 
                 <img 
-                  src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600&h=800&q=80"
+                  src="/images/founder.webp"
                   alt="Sayed Ahmad - Sitora Founder"
                   referrerPolicy="no-referrer"
                   className="w-full aspect-[3/4] object-cover rounded-xl grayscale group-hover:grayscale-0 transition-all duration-700 hover:scale-[1.01]"
