@@ -247,6 +247,9 @@ export const CraftedExperiencesSection: React.FC<CraftedExperiencesProps> = ({
                         <img
                           src={project.image}
                           alt={project.title}
+                          width={400}
+                          height={300}
+                          decoding="async"
                           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-100"
                           loading="lazy"
                         />

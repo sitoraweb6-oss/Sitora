@@ -286,6 +286,9 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({
                           <img
                             src={project.image}
                             alt={project.title}
+                            width={400}
+                            height={300}
+                            decoding="async"
                             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                             loading="lazy"
                           />

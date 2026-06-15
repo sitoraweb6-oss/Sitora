@@ -13,16 +13,18 @@ import { ARTICLES_DATA } from './data';
 // Components
 import { Header } from './components/Header';
 import { HeroSection } from './components/HeroSection';
-import { StatsSection } from './components/StatsSection';
-import { ServicesSection } from './components/ServicesSection';
-import { CraftedExperiencesSection } from './components/CraftedExperiencesSection';
-import { PricingSection } from './components/PricingSection';
-import { AboutSection } from './components/AboutSection';
-import { InsightsSection } from './components/InsightsSection';
 import { Footer } from './components/Footer';
-import { InquiryForm, FloatingWhatsApp } from './components/InquiryForm';
+import { FloatingWhatsApp } from './components/InquiryForm';
 
 // Lazy-loaded sub-modules for extreme FCP/LCP and minimum main-thread work
+const StatsSection = React.lazy(() => import('./components/StatsSection').then(m => ({ default: m.StatsSection })));
+const ServicesSection = React.lazy(() => import('./components/ServicesSection').then(m => ({ default: m.ServicesSection })));
+const CraftedExperiencesSection = React.lazy(() => import('./components/CraftedExperiencesSection').then(m => ({ default: m.CraftedExperiencesSection })));
+const PricingSection = React.lazy(() => import('./components/PricingSection').then(m => ({ default: m.PricingSection })));
+const AboutSection = React.lazy(() => import('./components/AboutSection').then(m => ({ default: m.AboutSection })));
+const InsightsSection = React.lazy(() => import('./components/InsightsSection').then(m => ({ default: m.InsightsSection })));
+const InquiryForm = React.lazy(() => import('./components/InquiryForm').then(m => ({ default: m.InquiryForm })));
+
 const TestimonialsSection = React.lazy(() => import('./components/TestimonialsSection').then(m => ({ default: m.TestimonialsSection })));
 const FounderSection = React.lazy(() => import('./components/FounderSection').then(m => ({ default: m.FounderSection })));
 const FAQSection = React.lazy(() => import('./components/FAQSection').then(m => ({ default: m.FAQSection })));
@@ -630,18 +632,24 @@ export default function App() {
                     />
                     
                     {/* Trusted Statistics Section */}
-                    <StatsSection />
+                    <Suspense fallback={<div className="min-h-[140px] w-full" />}>
+                      <StatsSection />
+                    </Suspense>
                     
                     {/* Featured Services competent grid */}
-                    <ServicesSection 
-                      darkMode={darkMode}
-                      onOpenInquiry={handleOpenInquiry} 
-                    />
+                    <Suspense fallback={<div className="min-h-[440px] w-full" />}>
+                      <ServicesSection 
+                        darkMode={darkMode}
+                        onOpenInquiry={handleOpenInquiry} 
+                      />
+                    </Suspense>
                     
                     {/* Why Choose Sitora Web / About pillars */}
-                    <AboutSection 
-                      darkMode={darkMode} 
-                    />
+                    <Suspense fallback={<div className="min-h-[380px] w-full" />}>
+                      <AboutSection 
+                        darkMode={darkMode} 
+                      />
+                    </Suspense>
                     
                     {/* Sitora Web Industry Solutions Explorer */}
                     <Suspense fallback={<div className="min-h-[580px] w-full border border-dashed border-neutral-900/10 dark:border-neutral-800/10 rounded-3xl" />}>
@@ -652,10 +660,12 @@ export default function App() {
                     </Suspense>
                     
                     {/* Apple inspired premium pricing cards */}
-                    <PricingSection 
-                      darkMode={darkMode}
-                      onOpenInquiry={handleOpenInquiry} 
-                    />
+                    <Suspense fallback={<div className="min-h-[550px] w-full animate-pulse" />}>
+                      <PricingSection 
+                        darkMode={darkMode}
+                        onOpenInquiry={handleOpenInquiry} 
+                      />
+                    </Suspense>
                     
                     {/* Interactive Proposal Planner section copy on the homepage */}
                     <section className="py-20 sm:py-24 relative px-4 sm:px-6 lg:px-8 border-t border-neutral-900/10 dark:border-neutral-900/50" id="home-proposal-planner-section">
@@ -673,11 +683,13 @@ export default function App() {
                     </Suspense>
                     
                     {/* Crafted Experiences editorial list */}
-                    <CraftedExperiencesSection 
-                      darkMode={darkMode}
-                      onOpenInquiry={handleOpenInquiry} 
-                      onExplorePortfolio={() => handleNavigate('portfolio')}
-                    />
+                    <Suspense fallback={<div className="min-h-[600px] w-full" />}>
+                      <CraftedExperiencesSection 
+                        darkMode={darkMode}
+                        onOpenInquiry={handleOpenInquiry} 
+                        onExplorePortfolio={() => handleNavigate('portfolio')}
+                      />
+                    </Suspense>
                     
                     {/* Sitora Web interactive Before After Transformation Showcase */}
                     <Suspense fallback={<div className="min-h-[700px] sm:min-h-[760px] w-full border border-dashed border-neutral-900/10 dark:border-neutral-800/10 rounded-3xl" />}>
@@ -719,10 +731,12 @@ export default function App() {
                     </Suspense>
                     
                     {/* Advanced strategic Sitora Insights */}
-                    <InsightsSection 
-                      darkMode={darkMode} 
-                      onNavigateToBlog={() => handleNavigate('blog')}
-                    />
+                    <Suspense fallback={<div className="min-h-[480px] w-full" />}>
+                      <InsightsSection 
+                        darkMode={darkMode} 
+                        onNavigateToBlog={() => handleNavigate('blog')}
+                      />
+                    </Suspense>
                     
                     {/* FAQ Accordions block */}
                     <Suspense fallback={<div className="min-h-[480px] w-full border border-dashed border-neutral-900/10 dark:border-neutral-800/10 rounded-3xl" />}>
@@ -770,11 +784,13 @@ export default function App() {
             />
 
             {/* Consultation side drawer form */}
-            <InquiryForm
-              isOpen={inquiryOpen}
-              onClose={() => setInquiryOpen(false)}
-              initialType={inquiryType}
-            />
+            <Suspense fallback={null}>
+              <InquiryForm
+                isOpen={inquiryOpen}
+                onClose={() => setInquiryOpen(false)}
+                initialType={inquiryType}
+              />
+            </Suspense>
 
             {/* Sticky Floating WhatsApp portal widget */}
             <FloatingWhatsApp />

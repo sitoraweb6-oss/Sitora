@@ -20,6 +20,8 @@ export const SitoraIcon: React.FC<{ size?: number; className?: string; isLight?:
       width={size}
       height={size}
       className={`object-contain transition-all duration-300 ${className}`}
+      fetchPriority="high"
+      decoding="async"
     />
   );
 };
