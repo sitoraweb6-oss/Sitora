@@ -1,0 +1,6 @@
+{
+  "name": "Sitora Web",
+  "description": "Sitora Web is a premium full-service digital agency based in Bangladesh, delivering custom high-performing websites, digital marketing strategy, and e-commerce solutions.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-serif: "Playfair Display", ui-serif, Georgia, serif;
+
+  --color-immersive-bg: #05070A;
+  --color-brand-gold: #D6B16B;
+  --color-brand-gold-hover: #E4C78A;
+  --color-electric-blue: #7ED4FF;
+  
+  --color-dark-base: #05070A;
+  --color-dark-sec: #0B1016;
+  --color-dark-elev: #101722;
+  --color-dark-text-pri: #F7F8FA;
+  --color-dark-text-sec: #A7B0BD;
+  --color-dark-text-mut: #6D7682;
+  
+  --color-light-base: #FAFBFC;
+  --color-light-sec: #F3F5F7;
+  --color-light-elev: #FFFFFF;
+  --color-light-text-pri: #111827;
+  --color-light-text-sec: #4B5563;
+  --color-light-text-mut: #6B7280;
+  --color-light-gold: #B88A44;
+}
+
+/* Custom glow animations and immersive overlay backdrops */
+@keyframes pulseGlowGold {
+  0%, 100% {
+    opacity: 0.15;
+    transform: scale(1) translate(-5%, -5%);
+  }
+  50% {
+    opacity: 0.22;
+    transform: scale(1.08) translate(0%, 0%);
+  }
+}
+
+@keyframes pulseIceBlue {
+  0%, 100% {
+    opacity: 0.08;
+    transform: scale(1) translate(0%, 0%);
+  }
+  50% {
+    opacity: 0.13;
+    transform: scale(1.04) translate(-1%, 1%);
+  }
+}
+
+/* Enable decorative animations only on desktop width for excellent mobile LCP/FCP */
+@media (min-width: 768px) {
+  .animate-glow-gold {
+    animation: pulseGlowGold 14s infinite ease-in-out;
+  }
+
+  .animate-glow-blue {
+    animation: pulseIceBlue 16s infinite ease-in-out;
+  }
+}
+
+@media (max-width: 767px) {
+  .animate-glow-gold, .animate-glow-blue {
+    opacity: 0.1;
+    transform: none;
+  }
+}
+
+/* Scroll styling designed with precise Champagne Gold */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #05070A;
+}
+.light ::-webkit-scrollbar-track {
+  background: #FAFBFC;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(214, 177, 107, 0.2);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #D6B16B;
+}
+
+/* Glassmorphism utility rules with blur filters */
+.glass-premium-dark {
+  background: rgba(255, 255, 255, 0.035);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-premium-light {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* Scrollbar removal utilities */
+.scrollbar-none::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+.scrollbar-none {
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+}
+
+
